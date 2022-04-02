@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "九江市体育馆预约系统",
+  "usingComponents": {
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-search": "/node-modules/uview-ui/components/u-search/u-search",
+    "u-swiper": "/node-modules/uview-ui/components/u-swiper/u-swiper",
+    "u-grid": "/node-modules/uview-ui/components/u-grid/u-grid",
+    "u-grid-item": "/node-modules/uview-ui/components/u-grid-item/u-grid-item",
+    "u-popup": "/node-modules/uview-ui/components/u-popup/u-popup",
+    "u-divider": "/node-modules/uview-ui/components/u-divider/u-divider",
+    "u-card": "/node-modules/uview-ui/components/u-card/u-card",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button"
+  }
+}
