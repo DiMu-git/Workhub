@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "历史订单",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#ffffff",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "u-tabs-swiper": "/node-modules/uview-ui/components/u-tabs-swiper/u-tabs-swiper",
+    "u-card": "/node-modules/uview-ui/components/u-card/u-card"
+  }
+}

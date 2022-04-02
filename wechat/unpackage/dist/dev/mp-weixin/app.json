@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/take-foods/take-foods",
+    "pages/mine/mine",
+    "pages/pay/pay",
+    "pages/remark/remark",
+    "pages/login/login",
+    "pages/attendance/attendance",
+    "pages/orders/orders",
+    "pages/orders/detail",
+    "pages/mine/member-code",
+    "pages/mine/userinfo",
+    "pages/review/review",
+    "pages/info/info",
+    "pages/placeInfo/placeInfo",
+    "pages/reserve/reserve"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#919293",
+    "selectedColor": "#97AF13",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/images/tabBar/index.png",
+        "selectedIconPath": "static/images/tabBar/index_selected.png"
+      },
+      {
+        "pagePath": "pages/take-foods/take-foods",
+        "text": "订场",
+        "iconPath": "static/images/tabBar/appointment.png",
+        "selectedIconPath": "static/images/tabBar/appointment-selected.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "static/images/tabBar/mine.png",
+        "selectedIconPath": "static/images/tabBar/mine_selected.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "111"
+    }
+  },
+  "usingComponents": {}
+}
