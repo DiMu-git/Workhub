@@ -1,0 +1,105 @@
+.container{
+  .venueDetails{
+    padding: 0rpx 36rpx;
+    image{
+      width: 100%;
+      border-radius: 20rpx;
+    }
+    .title{
+      line-height: 40rpx;
+      text{
+        font-weight: 500;
+      }
+    }
+    .address{
+      margin-top: 10rpx;
+    }
+  }
+  .van-tabs__nav{
+    width: 375rpx;
+    .van-tab--active{
+      color:var(--themeColor);
+      font-size: var(--activeFontSize);
+      font-weight: 500;
+    }
+    .van-tabs__line{
+      background-color:var(--themeColor);
+    }
+  }
+  .facilityCnt{
+    border-top:14rpx solid #F7F7F7;
+    .infoItem{
+      display: flex;
+      justify-content: space-between;
+      padding: 30rpx 36rpx;
+      &:not(:last-child){
+        border-bottom: 1px solid #E5E5E5;
+      }
+      .left{
+        image{
+          width: 200rpx;
+          height: 156rpx;
+          border-radius: 20rpx;
+        }
+      }
+      .right{
+        width: 458rpx;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .title{
+          font-size: 28rpx;
+          text{
+            font-weight: 500;
+          }   
+          .price{
+            color: red;
+          }
+        }
+        .reserveBtn{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+  .courseCnt{
+    border-top:14rpx solid #F7F7F7;
+    .infoItem{
+      display: flex;
+      justify-content: space-between;
+      padding: 30rpx 36rpx;
+      &:not(:last-child){
+        border-bottom: 1px solid #E5E5E5;
+      }
+      .left{
+        image{
+          width: 200rpx;
+          height: 156rpx;
+          border-radius: 20rpx;
+        }
+      }
+      .right{
+        width: 458rpx;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .title{
+          font-size: 28rpx;
+          text{
+            font-weight: 500;
+          }
+          .price{
+            color: red;
+          }
+        }
+        .reserveBtn{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}

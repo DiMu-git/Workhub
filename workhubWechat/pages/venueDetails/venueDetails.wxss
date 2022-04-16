@@ -1,0 +1,99 @@
+.container .venueDetails {
+  padding: 0rpx 36rpx;
+}
+.container .venueDetails image {
+  width: 100%;
+  border-radius: 20rpx;
+}
+.container .venueDetails .title {
+  line-height: 40rpx;
+}
+.container .venueDetails .title text {
+  font-weight: 500;
+}
+.container .venueDetails .address {
+  margin-top: 10rpx;
+}
+.container .van-tabs__nav {
+  width: 375rpx;
+}
+.container .van-tabs__nav .van-tab--active {
+  color: var(--themeColor);
+  font-size: var(--activeFontSize);
+  font-weight: 500;
+}
+.container .van-tabs__nav .van-tabs__line {
+  background-color: var(--themeColor);
+}
+.container .facilityCnt {
+  border-top: 14rpx solid #F7F7F7;
+}
+.container .facilityCnt .infoItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 36rpx;
+}
+.container .facilityCnt .infoItem:not(:last-child) {
+  border-bottom: 1px solid #E5E5E5;
+}
+.container .facilityCnt .infoItem .left image {
+  width: 200rpx;
+  height: 156rpx;
+  border-radius: 20rpx;
+}
+.container .facilityCnt .infoItem .right {
+  width: 458rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container .facilityCnt .infoItem .right .title {
+  font-size: 28rpx;
+}
+.container .facilityCnt .infoItem .right .title text {
+  font-weight: 500;
+}
+.container .facilityCnt .infoItem .right .title .price {
+  color: red;
+}
+.container .facilityCnt .infoItem .right .reserveBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .courseCnt {
+  border-top: 14rpx solid #F7F7F7;
+}
+.container .courseCnt .infoItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 36rpx;
+}
+.container .courseCnt .infoItem:not(:last-child) {
+  border-bottom: 1px solid #E5E5E5;
+}
+.container .courseCnt .infoItem .left image {
+  width: 200rpx;
+  height: 156rpx;
+  border-radius: 20rpx;
+}
+.container .courseCnt .infoItem .right {
+  width: 458rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container .courseCnt .infoItem .right .title {
+  font-size: 28rpx;
+}
+.container .courseCnt .infoItem .right .title text {
+  font-weight: 500;
+}
+.container .courseCnt .infoItem .right .title .price {
+  color: red;
+}
+.container .courseCnt .infoItem .right .reserveBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,14 @@
+<!--pages/recharge/recharge.wxml-->
+<view class="container">
+  <view class="bigTitle">recharge amount</view>
+  <view class="listBox">
+    <view class="item {{item.checked?'active':''}}" wx:for="{{list}}" wx:key="*this" bindtap="select" data-index="{{index}}">
+      <view class="price">￥{{item.price}}</view>
+      <view class="month">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="total">money:<text>￥{{total}}</text></view>
+  <view class="saveContent">
+    <van-button round type="info" block bindtap="save">recharge</van-button>
+  </view>
+</view>

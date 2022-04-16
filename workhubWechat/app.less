@@ -1,0 +1,56 @@
+/**app.wxss**/
+
+page{
+  height: 100%;
+  --themeColor:#2793FF;
+  --activeFontSize:36rpx;
+  color: #333333;
+}
+
+input {
+  display: inline-block;
+  background-color: rgb(255, 255, 255);
+  padding: 2px 5px;
+  color: rgb(0, 0, 0);
+  font-size: 17px;
+  height: 25px;
+  box-sizing: content-box;
+}
+
+.container {
+  padding-bottom:80rpx;
+  .ellipsis2{
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .noData{
+    text-align: center;
+    margin-top: 200rpx;
+    image{
+      width: 510rpx;
+      height: 368rpx;
+    }
+
+    .words{
+      margin-top: -110rpx;
+      color: #a7a7a7;
+      line-height: 50rpx;
+      .text{
+        color: #1989fa;
+        margin: 0rpx 8rpx;
+        display: inline-block;}
+    }
+  }
+  .noMore{
+    font-size: 24rpx;
+    color: #666666;
+    text-align: center;
+    line-height: 50rpx;
+    margin-top: 40rpx;
+  }
+} 

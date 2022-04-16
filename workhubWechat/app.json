@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/home/home", 
+    "pages/myReserve/myReserve",
+    "pages/search/search", 
+    "pages/my/my",
+    "pages/courseDetail/courseDetail", 
+    "pages/facilityDetail/facilityDetail",
+    "pages/recharge/recharge",
+    "pages/venueDetails/venueDetails", 
+    "pages/webView/webView"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "selectedColor": "#2793FF",
+    "list": [
+      {
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home_fill.png",
+        "pagePath": "pages/home/home",
+        "text": "home"
+      },
+      {
+        "iconPath": "images/icon/my.png",
+        "selectedIconPath": "images/icon/my_fill.png",
+        "pagePath": "pages/my/my",
+        "text": "my"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}

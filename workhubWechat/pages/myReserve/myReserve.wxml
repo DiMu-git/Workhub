@@ -1,0 +1,64 @@
+<!--pages/myReserve/myReserve.wxml-->
+<view class="container">
+  <van-tabs active="{{ activeName }}" sticky animated bind:change="changeTabs" line-width="18px" class="tabsBox">
+    <!-- 0、已使用；1、已付款；2、未付款；3、已退款；-1、预约失败 -->
+    <van-tab name="-1" title="failed"></van-tab>
+    <van-tab name="2" title="unpaid"></van-tab>
+    <van-tab name="1" title="paid"></van-tab>
+    <van-tab name="3" title="refund"></van-tab>
+    <van-tab name="0" title="used"></van-tab>
+  </van-tabs>
+  <view class="orderListBox">
+    <block wx:for="{{orderList}}" wx:key="*this" wx:if="{{item.flag == activeNameNow}}">
+      <view class="code"><text>code：</text>{{item.code}}</view>
+      <view class="infoItem" >
+        <view class="left">
+          <image src='{{item.url}}'></image>
+        </view>
+        <view class="right">
+          <view class="title ellipsis2"><text>venue：</text>{{item.name}}</view>
+          <view class="title reserveBtn">
+            <view><text>date：</text>{{item.time}}</view>
+          </view>
+          <view class="title reserveBtn">
+            <view><text>price：</text><text class="price">￥{{item.price}}</text></view>         
+          </view>
+        </view>
+      </view>
+      <view class="btnBox" wx:if="{{item.flag == activeNameNow}}">
+        <van-button type="default" bindtap="toQrcode" data-item="{{item}}" 
+        size="small">qrcode</van-button>
+        <van-button type="default" bindtap="toCancelFlag" data-item="{{item}}" 
+        wx:if="{{item.flag==-1||item.flag==1||item.flag==2}}"
+        size="small">cancel</van-button>
+        <van-button type="info" bindtap="toFacilityDetail" data-item="{{item}}" size="small">
+          <text wx:if="{{item.flag==-1}}">reason</text>
+          <text wx:if="{{item.flag==2}}">pay</text>
+          <text wx:if="{{item.flag==1}}">Paid</text>
+          <text wx:if="{{item.flag==3}}">refund</text>
+          <text wx:if="{{item.flag==0}}">used</text>
+        </van-button>
+      </view>
+    </block>
+
+    <view class="noData" wx:if="{{total == 0}}">
+      <image src="../../images/icon/noData2@2x.png"></image>
+      <view class="words">
+        <view>no data</view>
+      </view>
+    </view>
+    <view class="noMore" wx:if="{{total>4}}">It's all displayed～</view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />
+<van-dialog
+  use-slot
+  title="title"
+  show="{{ showQrcode }}"
+  show-cancel-button
+  confirmButtonText="confirm"
+  cancelButtonText="cancel"
+>
+  <image src="../../images/icon/qrcode.png"></image>
+</van-dialog>
+
