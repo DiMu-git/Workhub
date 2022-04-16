@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * @author mz
+ * @author md
  * @date 2022/4/5
  * @description 用户
  */

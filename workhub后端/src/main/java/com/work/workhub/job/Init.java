@@ -1,6 +1,5 @@
 package com.work.workhub.job;
 
-import org.hibernate.annotations.Comment;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -9,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * @author mz
+ * @author md
  * @date 2022/4/7
  * @description
  */
