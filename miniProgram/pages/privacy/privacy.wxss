@@ -1,0 +1,19 @@
+.container {
+  padding: 10rpx 10rpx;
+}
+.container .bigTitle {
+  padding: 10rpx 10rpx;
+  font-size: 34rpx;
+  font-weight: 800;
+  text-align: center;
+}
+.container .elseT {
+  padding: 10rpx 10rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+.container .else {
+  padding: 10rpx 10rpx;
+  font-size: 20rpx;
+  font-weight: 400;
+}

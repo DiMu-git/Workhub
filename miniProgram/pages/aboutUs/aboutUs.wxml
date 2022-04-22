@@ -1,0 +1,38 @@
+<view class="container">
+<!-- search -->
+<swiper class='swiper-box' indicator-active-color="#fff" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}" circular>
+    <block wx:for="{{bannerList}}" wx:key="*this">
+      <swiper-item>
+        <image src='{{item.imgUrl}}' class="slide-image" bindtap="toBannerDetail" data-url="{{item}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+<view id="developerView">
+    <view class="developerItemView">
+        <view>Developers</view>
+        <view>Workingshop team</view>
+    </view>
+    <view class="developerItemView">
+        <view>Main Contact</view>
+        <view>Di Mu/Junjie Sheng</view>
+    </view>
+    <view class="developerItemView">
+        <view>Phone Number</view>
+        <view>15520725828/18856982874</view>
+    </view>
+    <view class="developerItemView">
+        <view>Developer WeChat</view>
+        <view>haaaaaaanson</view>
+        <view>SoundDreamer1123</view>
+    </view>
+    <view class="developerItemView">
+        <view>Email</view>
+        <view>410147434@qq.com</view>
+    </view>
+</view>
+<view id="qrCodeView">
+    <image src="../../images/icon/developer.PNG"></image>
+    <text>Scan the qrcode to contact us!</text>
+</view>
+  </view>

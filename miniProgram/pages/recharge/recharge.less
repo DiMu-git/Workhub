@@ -1,0 +1,76 @@
+.container{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  .bigTitle{
+    padding: 40rpx 40rpx;
+    font-size: 52rpx;
+    font-weight: 800;
+  }
+  .nmText{
+    padding: 20rpx 30rpx;
+    font-size: 36rpx;
+    font-weight: 600;
+    text{
+      color: red;
+    }
+  }
+  .listBox{
+    display: flex;
+    flex-wrap: wrap;
+    .item{
+      width: 200rpx;
+      height: 300rpx;
+      background-color: #ffffff;
+      border: 3rpx solid #575757;
+      border-radius: 10rpx;
+      margin: 22rpx;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      color: #575757;
+      font-size: 34rpx;
+      font-weight: 800;
+      .price{
+        font-size: 48rpx;
+        color: rgb(231, 71, 71);
+      }
+    }
+    .active{
+      border: 3rpx solid #3F96E7;
+      color: #3F96E7;
+    }
+  }
+  .total{
+    padding: 36rpx;
+    font-weight: 500;
+    text{
+      color: red;
+    }
+  }
+  .saveContent{
+    padding: 0px 36rpx;
+  }
+
+  .swiper-box{
+    padding: 0px 36rpx;
+    height: 350rpx;
+    .slide-image {
+      width: 100%;
+      height: 350rpx;
+      border-radius: 26rpx;
+    }
+    .wx-swiper-dot {
+      width: 6rpx;
+      height: 6rpx;
+      display: inline-flex;
+      border-radius: 6rpx;
+      background: #ffffff;
+      .wx-swiper-dots-horizontal {
+        margin-bottom: 2rpx;
+      }
+    }
+    .wx-swiper-dot-active {
+      width: 24rpx;
+    }
+  }
+}

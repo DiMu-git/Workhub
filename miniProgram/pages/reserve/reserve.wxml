@@ -1,0 +1,44 @@
+<!--pages/reserve/reserve.wxml-->
+<view class="container">
+<!-- search -->
+  <view class="search" >
+    <van-search
+      bindtap="toSearch"
+      value="{{ value }}"
+      shape="round"
+      disabled
+      background="#ffffff"
+      placeholder="Search for facilities or courses"
+    />
+  </view>
+  <!-- rotation -->
+  <swiper class='swiper-box' indicator-active-color="#fff" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}" circular>
+    <block wx:for="{{bannerList}}" wx:key="*this">
+      <swiper-item>
+        <image src='{{item.imgUrl}}' class="slide-image" bindtap="toBannerDetail" data-url="{{item}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- Venue -->
+  <view class="venueCnt">
+    <view class="infoTitle">
+      <image src='../../images/icon/location.png'></image>
+      <text>Venue list</text>
+    </view>
+    <view class="content">
+      <block wx:for="{{venueList}}" wx:key="*this">
+        <view class="infoItem" bindtap="toHospitalDetail" data-item="{{item}}">
+          <view class="left">
+            <image src='{{item.url}}'></image>
+          </view>
+          <view class="right">
+            <view class="title ellipsis2"><text>Venue: </text>{{item.name}}</view>
+            <view class="title ellipsis2"><text>Address: </text>{{item.address}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="noMore" wx:if="{{venueList.length>5}}">It's all displayed～</view>
+</view>

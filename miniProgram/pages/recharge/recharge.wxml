@@ -1,0 +1,23 @@
+<!--pages/recharge/recharge.wxml-->
+<view class="container">
+  <view class="bigTitle">Be one of our members...</view>
+  <swiper class='swiper-box' indicator-active-color="#fff" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{1000}}" circular>
+    <block wx:for="{{bannerList}}" wx:key="*this">
+      <swiper-item>
+        <image src='{{item.imgUrl}}' class="slide-image" bindtap="toBannerDetail" data-url="{{item}}"/>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="nmText">PREMIUM member:</view>
+  <view class="nmText">Enjoy a 24/7 real-time customer service provided by developers.</view>
+  <view class="listBox">
+    <view class="item {{item.checked?'active':''}}" wx:for="{{list}}" wx:key="*this" bindtap="select" data-index="{{index}}">
+      <view class="month">{{item.name}}</view>
+      <view class="price">￡{{item.price}}</view>
+    </view>
+  </view>
+  <view class="nmText">Subscribing fee:<text>￡{{total}}</text></view>
+  <view class="saveContent">
+    <van-button round type="info" block bindtap="save">Subscribe</van-button>
+  </view>
+</view>

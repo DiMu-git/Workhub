@@ -1,0 +1,64 @@
+<!--pages/myReserve/myReserve.wxml-->
+<view class="container">
+  <image src='../../images/icon/leeds.jpg' mode="scaleToFit" style="height:350rpx;width:100%"></image>
+  <view class="orderListBox">
+    <view class="infoTitle">
+      <image src='../../images/icon/reservation.png'></image>
+      <text>Recent Reservation</text>
+    </view>
+    <block wx:for="{{orderList}}" wx:key="*this" wx:if="{{item.flag == activeName}}">
+      <view class="infoItem" >
+        <view class="left">
+          <image src='{{item.url}}'></image>
+        </view>
+        <view class="right">
+          <view class="title"><text>Venue：</text>{{item.name}}</view>
+          <view class="title">
+            <view><text>Date：</text>{{item.time}}</view>
+          </view>
+          <view class="title">
+            <view><text>Price：</text><text class="price">￡{{item.price}}</text></view>         
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="noData" wx:if="{{totalArr[2] == 0}}">
+      <image src="../../images/icon/noData2@2x.png"></image>
+    </view>
+  </view>
+  <view class="divLine"></view>
+  <view class="orderListBox">
+    <view class="infoTitle">
+      <image src='../../images/icon/recommand.png'></image>
+      <text>Recommanded Venue</text>
+    </view>
+      <block wx:for="{{venueList}}" wx:key="index" wx:if="{{index == 1}}">
+        <view class="infoItem" bindtap="toHospitalDetail" data-item="{{item}}">
+          <view class="left">
+            <image src='{{item.url}}'></image>
+          </view>
+          <view class="right">
+            <view class="title">{{item.name}}</view>
+            <view class="title">{{item.address}}</view>
+          </view>
+        </view>
+      </block>
+  </view>
+  <view class="orderListBox">
+    <view class="infoTitle">
+      <image src='../../images/icon/sport.png'></image>
+      <text>Related Facility/Course</text>
+    </view>
+        <view class="infoItem">
+          <view class="left">
+            <image src='../../images/icon/leeds1.jpg'></image>
+          </view>
+          <view class="right">
+            <view class="title">Cycling track</view>
+            <view class="title">remaining: 10</view>
+          </view>
+        </view>
+  </view>
+</view>
+
+

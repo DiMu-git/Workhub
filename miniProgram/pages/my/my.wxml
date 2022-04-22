@@ -1,0 +1,78 @@
+<!--pages/my/my.wxml-->
+<view class="baseInfo">
+  <view class="info">
+    <view class="left">
+      <view class="photo"  bindtap="getUserProfile">
+        <image class="header" src="{{userInfo.url}}"></image>
+      </view>
+      <view wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}  
+        <image wx:if="{{userInfo.vip==1}}" class="vipIcon" src="../../images/icon/vipIcon.png"></image>
+      </view>
+      <view wx:else>
+        <button class="loginBtn" bindtap="getUserProfile">Click login</button>
+      </view>
+    </view>
+    <view class="right" wx:if="{{userInfo.nickName}}" bindtap="toPersonalData">
+      <image src="../../images/icon/myEdit@2x.png"></image>
+    </view>
+  </view>
+</view>
+
+<view class="listContent1">
+  <view class="iconAndTitle">
+    <image wx:if="{{userInfo.vip == 1}}" src='../../images/icon/premium.png'></image>
+    <image wx:if="{{userInfo.vip != 1}}" src='../../images/icon/member.png'></image>
+  </view>
+</view>
+
+<view class="listContent">
+  <van-cell is-link bindtap="toRecharge">
+    <view slot="title">
+      <view class="iconAndTitle">
+        <image src='../../images/icon/membership-card.png'></image>
+        <text>Membership</text>
+      </view>
+    </view>
+  </van-cell>
+</view>
+<view class="listContent">
+  <van-cell is-link bindtap="toMyReserve">
+    <view slot="title">
+      <view class="iconAndTitle">
+        <image src='../../images/icon/reserve.png'></image>
+        <text>My reservation</text>
+      </view>
+    </view>
+  </van-cell>
+</view>
+<view class="listContent">
+  <van-cell is-link bindtap="toHome">
+    <view slot="title">
+      <view class="iconAndTitle">
+        <image src='../../images/icon/home_fill.png'></image>
+        <text>To Home</text>
+      </view>
+    </view>
+  </van-cell>
+</view>
+<view class="listContent">
+  <van-cell is-link bindtap="toUs">
+    <view slot="title">
+      <view class="iconAndTitle">
+        <image src='../../images/icon/information.png'></image>
+        <text>About us</text>
+      </view>
+    </view>
+  </van-cell>
+</view>
+<view class="listContent">
+<van-cell is-link bindtap="toPrivacy">
+    <view slot="title">
+      <view class="iconAndTitle">
+        <image src='../../images/icon/privacy-policy.png'></image>
+        <text>Privacy terms</text>
+      </view>
+    </view>
+  </van-cell>
+</view>
+<!-- <van-dialog id="van-dialog" bind:getphonenumber="getPhoneNumber1"/> -->

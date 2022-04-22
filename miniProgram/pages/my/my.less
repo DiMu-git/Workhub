@@ -1,0 +1,82 @@
+/* pages/my/my.less */
+.baseInfo{
+  background: linear-gradient(#e6dd92, #f7f4d2);
+  height: 200rpx;
+  .vipIcon{
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+  }
+  .info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 40rpx;
+    color: #000000;
+    .left{
+      display: flex;
+      align-items: center;
+      .photo{
+        position: relative;
+        .header{
+          width: 126rpx;
+          height: 126rpx;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 36rpx;
+        }
+        .sex{
+          width: 42rpx;
+          height: 42rpx;
+          position: absolute;
+          right: 40rpx;
+          bottom: 40rpx;
+        }
+      }
+      .loginBtn{
+        padding-left: 0px;
+        padding-right: 0px;
+        font-weight: 500;
+        color: #000000;
+        background-color: transparent;
+        line-height: 3;
+        &::after {
+          border: 0;
+        }
+      }
+
+    }
+    .right{
+      margin-right: 60rpx;
+      padding:26rpx;
+      image{
+        width: 34rpx;
+        height: 34rpx;
+      }
+    }
+  }
+}
+.listContent{
+  margin:20rpx;
+    box-shadow: 0px 2px 34px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 20rpx;
+    overflow: hidden;
+    .iconAndTitle{
+      display: flex;
+      align-items: center;
+      image{width: 50rpx;height: 50rpx;margin: 0 24rpx;}
+      text{font-size: 28rpx;color: #333333; }
+    }
+}
+.listContent1{
+  margin:20rpx;
+    box-shadow: 0px 2px 34px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 20rpx;
+    overflow: hidden;
+    .iconAndTitle{
+      display: flex;
+      align-items: center;
+      image{width: 1500rpx;height: 400rpx;margin: 0 24rpx;}
+      text{font-size: 28rpx;color: #333333; }
+    }
+}
