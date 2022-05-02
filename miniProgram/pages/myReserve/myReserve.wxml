@@ -1,14 +1,12 @@
 <!--pages/myReserve/myReserve.wxml-->
 <view class="container">
   <van-tabs active="{{ activeName }}" sticky animated bind:change="changeTabs" line-width="18px" class="tabsBox">
-    <!-- 0、Used；1、Paid；2、Unpaid；3、Refund；-1、Failed -->
     <van-tab name="-1" title="failed"></van-tab>
     <van-tab name="2" title="unpaid"></van-tab>
     <van-tab name="1" title="paid"></van-tab>
     <van-tab name="3" title="refund"></van-tab>
     <van-tab name="0" title="used"></van-tab>
   </van-tabs>
-  
   <view class="orderListBox">
     <block wx:for="{{orderList}}" wx:key="*this" wx:if="{{item.flag == activeNameNow}}">
       <view class="code"><text>code：</text>{{item.code}}</view>
@@ -22,13 +20,19 @@
             <view><text>date：</text>{{item.time}}</view>
           </view>
           <view class="title reserveBtn">
-            <view><text>price：</text><text class="price">￡{{item.price}}</text></view>         
+            <view><text>time：</text>{{item.duringTime}}</view>
+          </view>
+          <view class="title reserveBtn">
+            <view><text>people number：</text>{{item.peopleNum}}</view>
+          </view>
+          <view class="title reserveBtn">
+            <view><text>price：</text><text class="price">￥{{item.price}}</text></view> 
           </view>
         </view>
       </view>
       <view class="btnBox" wx:if="{{item.flag == activeNameNow}}">
         <van-button type="default" bindtap="toQrcode" data-item="{{item}}" 
-        size="small">QRcode</van-button>
+        size="small">qrcode</van-button>
         <van-button type="default" bindtap="toCancelFlag" data-item="{{item}}" 
         wx:if="{{item.flag==-1||item.flag==1||item.flag==2}}"
         size="small">cancel</van-button>

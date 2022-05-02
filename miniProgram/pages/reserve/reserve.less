@@ -32,28 +32,33 @@
   }
 
   .venueCnt{
-    color: #333333;
+    padding-top: 10rpx;
+    border-top: 10rpx solid #F7F7F7;
     .infoTitle{
       padding: 0rpx 36rpx;
-      margin-top: 30rpx;
-      font-weight: 500;
-      font-size: 32rpx;
+      margin-top: 10rpx;
+      font-weight: 700;
+      font-size: 40rpx;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
       display: flex;
       align-items: center;
       image{
-        width: 50rpx;height: 50rpx;margin-right: 10rpx
+        width: 50rpx;
+        height: 50rpx;
+        margin-right: 10rpx
       }
     }
     .content{
       .infoItem{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         padding: 30rpx 36rpx;
         &:not(:last-child){
           border-bottom: 1px solid #E5E5E5;
         }
         .left{
           image{
+            margin: 10 10 10;
             width: 200rpx;
             height: 156rpx;
             border-radius: 20rpx;
@@ -63,14 +68,18 @@
           width: 458rpx;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: space-around;
           .title{
-            height: 68rpx;
             font-size: 28rpx;
-            line-height: 34rpx;        
+            font-weight: 600;  
+            padding: 10rpx 10rpx;
             text{
               font-weight: 500;
-            }   
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            .ven{
+              font-size: 38rpx;
+            }
           }
         }
       }

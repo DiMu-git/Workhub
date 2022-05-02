@@ -34,6 +34,11 @@
 .container .paywayBox {
   margin-top: 36rpx;
 }
+.container .paywayBox .paywayList image {
+  width: 50rpx;
+  height: 50rpx;
+  padding: 10rpx 10rpx;
+}
 .container .paywayBox .paywayList .bankNum {
   display: flex;
   align-items: center;

@@ -24,7 +24,7 @@
   <view class="venueCnt">
     <view class="infoTitle">
       <image src='../../images/icon/location.png'></image>
-      <text>Venue list</text>
+      <text>Venue List</text>
     </view>
     <view class="content">
       <block wx:for="{{venueList}}" wx:key="*this">
@@ -32,9 +32,9 @@
           <view class="left">
             <image src='{{item.url}}'></image>
           </view>
-          <view class="right">
-            <view class="title ellipsis2"><text>Venue: </text>{{item.name}}</view>
-            <view class="title ellipsis2"><text>Address: </text>{{item.address}}</view>
+            <view class="right">
+              <view class="title"><view class="ven">{{item.name}}</view></view>
+              <view class="title"><text>Address: </text>{{item.address}}</view>
           </view>
         </view>
       </block>

@@ -1,4 +1,5 @@
 .container .venueDetails {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   padding: 0rpx 36rpx;
 }
 .container .venueDetails image {
@@ -6,13 +7,16 @@
   border-radius: 20rpx;
 }
 .container .venueDetails .title {
-  line-height: 40rpx;
-}
-.container .venueDetails .title text {
-  font-weight: 500;
+  padding: 20rpx 20rpx;
+  font-size: 50rpx;
+  font-weight: 800;
+  text-align: center;
 }
 .container .venueDetails .address {
-  margin-top: 10rpx;
+  padding: 10rpx 10rpx;
+  font-size: 40rpx;
+  font-weight: 500;
+  text-align: center;
 }
 .container .van-tabs__nav {
   width: 375rpx;
@@ -26,7 +30,8 @@
   background-color: var(--themeColor);
 }
 .container .facilityCnt {
-  border-top: 14rpx solid #F7F7F7;
+  padding-top: 10rpx;
+  border-top: 10rpx solid #F7F7F7;
 }
 .container .facilityCnt .infoItem {
   display: flex;
@@ -37,6 +42,7 @@
   border-bottom: 1px solid #E5E5E5;
 }
 .container .facilityCnt .infoItem .left image {
+  margin: 10 10 10;
   width: 200rpx;
   height: 156rpx;
   border-radius: 20rpx;
@@ -45,13 +51,16 @@
   width: 458rpx;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .container .facilityCnt .infoItem .right .title {
   font-size: 28rpx;
+  font-weight: 600;
+  padding: 5rpx 5rpx;
 }
 .container .facilityCnt .infoItem .right .title text {
   font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container .facilityCnt .infoItem .right .title .price {
   color: red;
@@ -62,7 +71,8 @@
   justify-content: space-between;
 }
 .container .courseCnt {
-  border-top: 14rpx solid #F7F7F7;
+  padding-top: 10rpx;
+  border-top: 10rpx solid #F7F7F7;
 }
 .container .courseCnt .infoItem {
   display: flex;
@@ -73,6 +83,7 @@
   border-bottom: 1px solid #E5E5E5;
 }
 .container .courseCnt .infoItem .left image {
+  margin: 10 10 10;
   width: 200rpx;
   height: 156rpx;
   border-radius: 20rpx;
@@ -81,13 +92,16 @@
   width: 458rpx;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .container .courseCnt .infoItem .right .title {
   font-size: 28rpx;
+  font-weight: 600;
+  padding: 5rpx 5rpx;
 }
 .container .courseCnt .infoItem .right .title text {
   font-weight: 500;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container .courseCnt .infoItem .right .title .price {
   color: red;

@@ -4,9 +4,6 @@ const {getOrdersByUser,refund,sendOrder} = require("../../api/my.js");
 import Dialog from '@vant/weapp/dialog/dialog';
 Page({
 
-  /**
-   * Initial page data
-   */
   data: {
     orderList:[],
     activeName:"-1",
@@ -30,6 +27,7 @@ Page({
     sendOrder(params).then(res=>{
       wx.showToast({title: res,icon:'succee'})
     })
+
   },
   toQrcode(){
     this.setData({
@@ -58,6 +56,7 @@ Page({
   },
   getOrdersByUser(userId){
     getOrdersByUser({userId:userId}).then(res=>{
+      console.log(res)
       let totalArr = [0,0,0,0,0]
       res.forEach(item => {
         let index = item.flag + 1
@@ -70,59 +69,38 @@ Page({
       })
     })
   },
-  /**
-   * Lifecycle functions - listening for page loads
-   */
   onLoad: function (options) {
     let userId = app.globalData.userInfo.id;
+    console.log(userId);
+    // let userId = "o8pAY46lJawP36HhBoime8_xJhIM"
     this.getOrdersByUser(userId)
+    console.log(this.data.orderList)
   },
 
-  /**
-   * Lifecycle functions - listening for the initial rendering of the page to complete
-   */
   onReady: function () {
 
   },
 
-  /**
-   * Lifecycle functions - listening to the page display
-   */
   onShow: function () {
 
   },
 
-  /**
-   * Lifecycle functions - Listening for page hiding
-   */
   onHide: function () {
 
   },
 
-  /**
-   * Lifecycle functions - Listening for page unloading
-   */
   onUnload: function () {
 
   },
 
-  /**
-   * Page related event handling functions - listening to user drop down actions
-   */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * Functions for page up bottoming events
-   */
   onReachBottom: function () {
 
   },
 
-  /**
-   * Users click on the top right corner to share
-   */
   onShareAppMessage: function () {
 
   }

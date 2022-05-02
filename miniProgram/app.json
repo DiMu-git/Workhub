@@ -9,7 +9,6 @@
     "pages/facilityDetail/facilityDetail",
     "pages/recharge/recharge",
     "pages/venueDetails/venueDetails", 
-    "pages/webView/webView",
     "pages/personalData/personalData",
     "pages/aboutUs/aboutUs",
     "pages/privacy/privacy"

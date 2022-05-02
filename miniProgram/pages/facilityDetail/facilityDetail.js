@@ -1,53 +1,143 @@
-// pages/facilityDetail/facilityDetail.js
+// pages/courseDetail/courseDetail.js
 const app = getApp();
 const {getTimes,orderPay} = require("../../api/home.js");
 import Dialog from '@vant/weapp/dialog/dialog';
 Page({
 
-  /**
-   * Initial page data
-   */
   data: {
+    discount:1,
     reserveList:[],
-    result:[],
+    quantity:0,
+    result1:[],
+    result2:[],
+    result3:[],
+    minimum:50,
+
+    quan1:[],
+    quan2:[],
+    quan3:[],
+
     price:0,
     radio:"1",
     bankNum:"",
+    peopleNum:0,
     msg:{
       "type":2,
       "money":0,
       "bank":"",
       "flag":1,
       "userId":"",
+      "peopleNum":"",
       "data":[]
     }
   },
-  onChangeCheckbox(event) {
-    let checkedIndexs = event.detail
+  changeTabs(){
+
+  },
+  onChangeCheckbox1(event) {
+    this.setData({
+      quan1:event.detail
+    })
+    this.handleData()
+  },
+  onChangeCheckbox2(event) {
+    this.setData({
+      quan2:event.detail
+    })
+    this.handleData()
+  },
+  onChangeCheckbox3(event) {
+    this.setData({
+      quan3:event.detail
+    })
+    this.handleData()
+  },
+  handleData(){
+    let quantity = this.data.quan1.length+this.data.quan2.length+this.data.quan3.length
     let moneyTemp = 0;
     let dataTemp = [];
-    checkedIndexs.forEach(item => {
-      let reserveItem = this.data.reserveList[parseInt(item)]
-      moneyTemp += parseFloat(reserveItem.price)
-      dataTemp.push({id:reserveItem.id})
+    let numTemp = 50;
+    this.setData({
+      minimum:this.data.result1[0].num
+  });
+    this.data.result1.forEach((item,index) => {
+      let obj={id:item.id}
+      if(this.data.quan1.indexOf(index+'')>-1){ 
+        moneyTemp += parseFloat(item.price*this.data.discount)
+        dataTemp.push(obj)
+        if(item.nums<=numTemp){
+          numTemp=item.nums
+        }
+      }
     });
-    if(checkedIndexs.length>=2){
+    console.log(dataTemp)
+
+    this.data.result2.forEach((item,index) => {
+      let obj={id:item.id}
+      if(this.data.quan2.indexOf(index+'')>-1){ 
+        moneyTemp += parseFloat(item.price*this.data.discount)
+        dataTemp.push(obj)
+        if(item.nums<=numTemp){
+          numTemp=item.nums
+        }
+      }
+
+    });
+    this.data.result3.forEach((item,index) => {
+      let obj={id:item.id}
+
+      if(this.data.quan3.indexOf(index+'')>-1){ 
+        moneyTemp += parseFloat(item.price*this.data.discount)
+        dataTemp.push(obj)
+        if(item.nums<=numTemp){
+          numTemp=item.nums
+        }
+      }
+
+    });
+    if(quantity>2){
       moneyTemp = (moneyTemp * 0.8).toFixed(2)
     }else{
+
       moneyTemp = moneyTemp.toFixed(2)
+
     }
-    
     this.data.msg.money = parseFloat(moneyTemp)
+
     this.data.msg.data = dataTemp
+    this.data.msg.money = moneyTemp
     this.setData({
-      result: event.detail,
-      price:moneyTemp*100
+      price:moneyTemp*this.data.peopleNum*100,
+      quantity:quantity,
+      minimum:numTemp
     });
+    if(this.data.peopleNum>this.data.minimum){
+      this.data.peopleNum = this.data.minimum;
+      this.setData({
+        peopleNum: this.data.minimum,
+        price:moneyTemp*this.data.minimum*100
+      });
+      wx.showToast({
+        title: 'Insufficient quantity',
+        icon:'error',
+        duration: 2000
+      })
+    }
   },
 
-  toggle(event) {
+  toggle1(event) {
     const { index } = event.currentTarget.dataset;
-    const checkbox = this.selectComponent(`.checkboxes-${index}`);
+    const checkbox = this.selectComponent(`.checkboxesOne-${index}`);
+    checkbox.toggle();
+  },
+  toggle2(event) {
+    const { index } = event.currentTarget.dataset;
+    const checkbox = this.selectComponent(`.checkboxesTwo-${index}`);
+    checkbox.toggle();
+  },
+  toggle3(event) {
+    const { index } = event.currentTarget.dataset;
+    const checkbox = this.selectComponent(`.checkboxesThree-${index}`);
     checkbox.toggle();
   },
 
@@ -58,6 +148,34 @@ Page({
     });
   },
 
+  onChangeNum(event){
+    let moneyTemp=0;
+    moneyTemp = this.data.msg.money
+
+    if(event.detail>this.data.minimum){
+      this.data.peopleNum = this.data.minimum;
+      this.setData({
+        peopleNum: this.data.minimum,
+        price:moneyTemp*this.data.minimum*100
+      });
+      wx.showToast({
+        title: 'Insufficient quantity',
+        icon:'error',
+        duration: 2000
+      })
+    }
+    else{
+      this.data.peopleNum = event.detail;
+      this.data.price = moneyTemp*event.detail
+      this.setData({
+        peopleNum: event.detail,
+        price:moneyTemp*event.detail*100
+      });
+    }
+
+  },
+
+
   onClick(event) {
     const { name } = event.currentTarget.dataset;
     this.setData({
@@ -65,18 +183,26 @@ Page({
     });
   },
   payOrder(){
-    if(this.data.result.length==0){
+    if(this.data.quantity==0){
       wx.showToast({
-        title: 'please select facility',
-        icon: 'none',
+        title: 'Select at least one facility',
+        icon: 'error',
+        duration: 2000
+      })
+      return
+    }
+    if(this.data.peopleNum==0){
+      wx.showToast({
+        title: 'Reserve at least one piece',
+        icon: 'error',
         duration: 2000
       })
       return
     }
     if(this.data.radio==1 && !this.data.bankNum){
       wx.showToast({
-        title: 'enter bank number',
-        icon: 'none',
+        title: 'Input correct card info',
+        icon: 'error',
         duration: 2000
       })
       return
@@ -91,13 +217,11 @@ Page({
     }
     this.data.msg.userId = app.globalData.userInfo.id
     
-    console.log(this.data.msg)
-    
     let title = "bank pay"
-    let message = "bank password"
+    let message = "Jump to outside website..."
     if(this.data.radio==1){
       title = "bank pay"
-      message="bank password"
+      message="Jump to outside website..."
     }
     if(this.data.radio==2){
       title = "cash pay"
@@ -105,17 +229,19 @@ Page({
     }
     if(this.data.radio==3){
       title = "weChat pay"
-      message="weChat password"
+      message="weChat password required"
     }
+    this.data.msg.peopleNum=this.data.peopleNum
+    this.data.msg.money=this.data.price/100
     Dialog.confirm({
       title: title,
       message: message,
-      confirmButtonText:"confirm",
-      cancelButtonText:"cancel"
+      confirmButtonText:"Confirm",
+      cancelButtonText:"Cancel"
     }).then(() => {
       orderPay(this.data.msg).then(res=>{
         wx.showToast({
-          title: 'success',
+          title: 'Success',
           icon: 'success',
           duration: 2000
         })
@@ -129,71 +255,70 @@ Page({
     }).catch(() => {
       // on cancel
     });
-
-    
   },
-  /**
-   * Lifecycle functions - listening for page loads
-   */
+
+
   onLoad: function (options) {
-    // options.type=2
-    // options.id="b9fe5ee0fd294c45aa4090a508779d44"
+    // options.type=1
+    // options.id="751fc9a30ec04407a6237a10e2a5b941"
     getTimes({type:options.type,id:options.id}).then(res=>{
-      this.setData({
-        reserveList:res
-      })
-      console.log(res)
+      let result1 = [];
+      let result2 = [];
+      let result3 = [];
+      res.forEach(item => {
+        if(item.status==1){
+          result1.push(item);
+        }else if(item.status==2){
+          result2.push(item);
+        }else{
+          result3.push(item);
+        }
+      });
+      this.setData({reserveList:res, result1:result1, result2:result2, result3:result3})
     })
     this.setData({
       bankNum:app.globalData.userInfo.bank
     })
+    if(app.globalData.userInfo.vip==1){
+      this.data.discount = 0.8;
+    }
+    else{
+      this.data.discount = 1;
+    }
+this.setData({
+  discount:this.data.discount
+})
   },
 
-  /**
-   * Lifecycle functions - listening for the initial rendering of the page to complete
-   */
+
   onReady: function () {
-
   },
 
-  /**
-   * Lifecycle functions - listening for page display
-   */
+
   onShow: function () {
-   
   },
 
-  /**
-   * Lifecycle functions - listening for page hide
-   */
+
   onHide: function () {
 
   },
 
-  /**
-   * Lifecycle functions - listening for page unload
-   */
+
   onUnload: function () {
 
   },
 
-  /**
-   * Page related event handling functions - listening to user drop down actions
-   */
+
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * Functions for page up bottoming events
-   */
+
   onReachBottom: function () {
 
   },
 
-  /**
-   * Users click on the top right corner to share
-   */
+
   onShareAppMessage: function () {
 
   }

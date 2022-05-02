@@ -2,5 +2,5 @@
   "usingComponents": {
     "van-dialog": "@vant/weapp/dialog/index"
   },
-  "navigationBarTitleText": "Reservation"
+  "navigationBarTitleText": "Reserve"
 }

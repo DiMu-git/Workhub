@@ -46,18 +46,11 @@ Page({
         venueList: res,
       })
     })
+    console.log(res[0].data.url)
   },
   //banner
   toBannerDetail(e){
     return
-    app.webUrl = e.currentTarget.dataset.url;
-    let ifHaveParams = false;
-    if(app.webUrl.includes('?')){
-      ifHaveParams=true;
-    }
-    wx.navigateTo({
-      url: '../webView/webView?ifHaveParams='+ifHaveParams,
-    })
   },
   toHospitalDetail(e){
     let item = e.currentTarget.dataset.item;

@@ -1,7 +1,6 @@
 module.exports={
   // Current Environment：dev  prod  test
-  nowEnv:"test",
-  // nowEnv:"prod",
+  nowEnv:"dev",
   //Develop Environment
   dev:{
     baseUrl:"http://127.0.0.1:8088",

@@ -1,4 +1,4 @@
-<!--pages/myReserve/myReserve.wxml-->
+<!--pages/home/home-->
 <view class="container">
   <image src='../../images/icon/leeds.jpg' mode="scaleToFit" style="height:350rpx;width:100%"></image>
   <view class="orderListBox">
@@ -6,7 +6,7 @@
       <image src='../../images/icon/reservation.png'></image>
       <text>Recent Reservation</text>
     </view>
-    <block wx:for="{{orderList}}" wx:key="*this" wx:if="{{item.flag == activeName}}">
+    <block wx:for="{{orderList}}" wx:key="index" wx:if="{{index==0}}">
       <view class="infoItem" >
         <view class="left">
           <image src='{{item.url}}'></image>
@@ -15,6 +15,9 @@
           <view class="title"><text>Venue：</text>{{item.name}}</view>
           <view class="title">
             <view><text>Date：</text>{{item.time}}</view>
+          </view>
+          <view class="title">
+            <view><text>Time：</text>{{item.duringTime}}</view>
           </view>
           <view class="title">
             <view><text>Price：</text><text class="price">￡{{item.price}}</text></view>         
@@ -32,7 +35,7 @@
       <image src='../../images/icon/recommand.png'></image>
       <text>Recommanded Venue</text>
     </view>
-      <block wx:for="{{venueList}}" wx:key="index" wx:if="{{index == 1}}">
+      <block wx:for="{{venueList}}" wx:key="index" wx:if="{{index == 0}}">
         <view class="infoItem" bindtap="toHospitalDetail" data-item="{{item}}">
           <view class="left">
             <image src='{{item.url}}'></image>
@@ -55,7 +58,7 @@
           </view>
           <view class="right">
             <view class="title">Cycling track</view>
-            <view class="title">remaining: 10</view>
+            <view class="title">Remaining: 10</view>
           </view>
         </view>
   </view>

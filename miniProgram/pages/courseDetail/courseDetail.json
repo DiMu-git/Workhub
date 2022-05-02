@@ -10,5 +10,5 @@
     "van-field": "@vant/weapp/field/index",
     "van-dialog": "@vant/weapp/dialog/index"
   },
-  "navigationBarTitleText": "course reserve"
+  "navigationBarTitleText": "Course Reservation"
 }

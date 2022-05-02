@@ -46,11 +46,11 @@
   </van-cell>
 </view>
 <view class="listContent">
-  <van-cell is-link bindtap="toHome">
+<van-cell is-link bindtap="toPrivacy">
     <view slot="title">
       <view class="iconAndTitle">
-        <image src='../../images/icon/home_fill.png'></image>
-        <text>To Home</text>
+        <image src='../../images/icon/privacy-policy.png'></image>
+        <text>Privacy terms</text>
       </view>
     </view>
   </van-cell>
@@ -66,13 +66,12 @@
   </van-cell>
 </view>
 <view class="listContent">
-<van-cell is-link bindtap="toPrivacy">
+<van-cell is-link bindtap="call">
     <view slot="title">
       <view class="iconAndTitle">
-        <image src='../../images/icon/privacy-policy.png'></image>
-        <text>Privacy terms</text>
+        <image src='../../images/icon/phonecall.png'></image>
+        <text>Contact us</text>
       </view>
     </view>
   </van-cell>
 </view>
-<!-- <van-dialog id="van-dialog" bind:getphonenumber="getPhoneNumber1"/> -->

@@ -65,6 +65,13 @@ Page({
     })
   },
 
+  call:function(){
+    wx.makePhoneCall({
+      phoneNumber: "15520725828",
+    })
+  },
+
+
   
   getPhoneNumber1(e) {
     app.getPhoneNumber(e).then(()=>{

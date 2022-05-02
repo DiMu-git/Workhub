@@ -3,9 +3,7 @@ const app = getApp();
 const {getList} = require("../../api/home.js");
 
 Page({
-  /**
-   * Initial page data
-   */
+
   data: {
     facilityList:[],
     courseList:[],
@@ -36,11 +34,6 @@ Page({
       url: '../facilityDetail/facilityDetail?type='+item.type+'&id='+item.id
     })
   },
-  toHome(){
-    wx.navigateTo({
-      url: '../privacy/privacy'
-    })
-  },
   toCourseDetail:function(e){
     let item = e.currentTarget.dataset.item;
     wx.navigateTo({
@@ -48,9 +41,13 @@ Page({
     })
   },
 
-  /**
-   * Lifecycle functions - listening for page loads
-   */
+
+  call:function(){
+    wx.makePhoneCall({
+      phoneNumber: app.venueDetails.tele,
+    })
+  },
+
   onLoad: function (options) {
     let venueDetails = app.venueDetails
     this.setData({
@@ -60,51 +57,30 @@ Page({
     this.getList(venueDetails.id)
   },
 
-  /**
-   * Lifecycle functions - listening for the initial rendering of the page to complete
-   */
   onReady: function () {
 
   },
 
-  /**
-   * Lifecycle functions - listening to the page display
-   */
   onShow: function () {
 
   },
 
-  /**
-   * Lifecycle functions - Listening for page hiding
-   */
   onHide: function () {
 
   },
 
-  /**
-   * Lifecycle functions - Listening for page unloading
-   */
   onUnload: function () {
 
   },
 
-  /**
-   * Page related event handling functions - listening to user drop down actions
-   */
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * Functions for page up bottoming events
-   */
   onReachBottom: function () {
 
   },
 
-  /**
-   * Users click on the top right corner to share
-   */
   onShareAppMessage: function () {
 
   }

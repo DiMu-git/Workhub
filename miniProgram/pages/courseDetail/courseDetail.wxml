@@ -1,6 +1,6 @@
 <!--pages/courseDetail/courseDetail.wxml-->
 <view class="container">
-  <view class="bigTitle">select reserve list</view>
+  <view class="bigTitle">Available List</view>
   <view class="list">
     <van-tabs sticky animated bind:change="changeTabs" line-width="18px">
       <van-tab title="morning">
@@ -18,16 +18,16 @@
               <view slot="title">
                 <view class="date">{{item.time}}        {{item.duringTime}}</view>
                 <view class="numBox">
-                  <view class="price">￥{{item.price}}</view>
-                  <view><text>surplus:</text>{{item.remainNum}}</view>
-                  <view><text>total:</text>{{item.num}}</view>
+                  <view class="price">￡{{item.price*discount-2}}</view>
+                  <view><text>Available: </text>{{item.remainNum}}</view>
+                  <view><text>Total :</text>{{item.num}}</view>
                 </view>
               </view>
                 <van-checkbox
                   catch:tap="noop"
                   class="checkboxesOne-{{ index }}"
                   name="{{ index }}"
-                  disabled="{{item.remain==0}}"
+                  disabled="{{item.remainNum==0}}"
                 />
               </van-cell>
             </van-cell-group>
@@ -47,12 +47,11 @@
                 bind:click="toggle2"
               >
               <view slot="title">
-                <!-- <view class="van-cell-text">单元格</view> -->
                 <view class="date">{{item.time}}        {{item.duringTime}}</view>
                 <view class="numBox">
-                  <view class="price">￥{{item.price}}</view>
-                  <view><text>surplus:</text>{{item.remainNum}}</view>
-                  <view><text>total:</text>{{item.num}}</view>
+                  <view class="price">￡{{item.price*discount-2}}</view>
+                  <view><text>Available: </text>{{item.remainNum}}</view>
+                  <view><text>Total :</text>{{item.num}}</view>
                 </view>
               </view>
                 <van-checkbox
@@ -79,12 +78,11 @@
                 bind:click="toggle3"
               >
               <view slot="title">
-                <!-- <view class="van-cell-text">单元格</view> -->
-                <view class="date">{{item.time}}{{item.duringTime}}</view>
+                <view class="date">{{item.time}} {{item.duringTime}}</view>
                 <view class="numBox">
-                  <view class="price">￥{{item.price}}</view>
-                  <view><text>surplus:</text>{{item.remainNum}}</view>
-                  <view><text>total:</text>{{item.num}}</view>
+                  <view class="price">￡{{item.price*discount-2}}</view>
+                  <view><text>Available: </text>{{item.remainNum}}</view>
+                  <view><text>Total :</text>{{item.num}}</view>
                 </view>
               </view>
                 <van-checkbox
@@ -103,19 +101,39 @@
 
     
   </view>
+
+  <view class="peopleNumBox">
+    <view class="bigTitle">Confirm reservation quantity:</view>
+            <view slot="title">
+              <view class="bankNum">
+                <van-field
+                  model:value="{{ peopleNum }}"
+                  type="number"
+                  placeholder="please enter person number"
+                  border="{{ false }}"
+                  class="bankNumInput"
+                  bind:change="onChangeNum"
+                />
+              </view>
+            </view>
+  </view>
+
+
+
   <view class="paywayBox">
-    <view class="bigTitle">select payment method</view>
+    <view class="bigTitle">Select payment method:</view>
     <view class="paywayList">
       <van-radio-group value="{{ radio }}" bind:change="onChange">
         <van-cell-group>
           <van-cell clickable data-name="1" bind:click="onClick">
             <view slot="title">
               <view class="bankNum">
-                <text>bank</text>
+              <image src='../../images/icon/visa.png'></image>
+                <text>Bank</text>
                 <van-field
                   model:value="{{ bankNum }}"
                   type="number"
-                  placeholder="please enter bank number"
+                  placeholder="Enter correct card info"
                   border="{{ false }}"
                   class="bankNumInput"
                 />
@@ -123,10 +141,24 @@
             </view>
             <van-radio slot="right-icon" name="1" />
           </van-cell>
-          <van-cell title="cash" clickable data-name="2" bind:click="onClick">
+          <van-cell clickable data-name="2" bind:click="onClick">
+            <view slot="title">
+              <view class="bankNum">
+              <image src='../../images/icon/pound.png'></image>
+                <text>Cash</text>
+                <van-field/>
+              </view>
+            </view>
             <van-radio slot="right-icon" name="2" />
           </van-cell>
-          <van-cell title="weChat" clickable data-name="3" bind:click="onClick">
+          <van-cell clickable data-name="3" bind:click="onClick">
+            <view slot="title">
+              <view class="bankNum">
+              <image src='../../images/icon/wechatpay.png'></image>
+                <text>WeChatPay</text>
+                <van-field/>
+              </view>
+            </view>
             <van-radio slot="right-icon" name="3" />
           </van-cell>
         </van-cell-group>
@@ -135,12 +167,13 @@
   </view>
   <van-submit-bar
     price="{{ price }}"
-    button-text="pay order"
-    label="total:"
+    button-text="Reserve"
+    label="Total: "
     bind:submit="payOrder"
     tip="{{ true }}"
+    currency="￡"
   >
-    <van-tag type="primary">quantity:{{quantity}}</van-tag>
+    <van-tag type="primary">Quantity:{{quantity*peopleNum}}</van-tag>
     <view slot="tip">Book two or more with 20% discount</view>
   </van-submit-bar>
   <van-dialog id="van-dialog" />

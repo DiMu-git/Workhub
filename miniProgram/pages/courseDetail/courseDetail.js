@@ -4,11 +4,10 @@ const {getTimes,orderPay} = require("../../api/home.js");
 import Dialog from '@vant/weapp/dialog/dialog';
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
+    discount:1,
     reserveList:[],
+    minimum:50,
     quantity:0,
     result1:[],
     result2:[],
@@ -21,13 +20,15 @@ Page({
     price:0,
     radio:"1",
     bankNum:"",
+    peopleNum:0,
     msg:{
       "type":1,
       "money":0,
       "bank":"",
       "flag":1,
       "userId":"",
-      "data":[]
+      "data":[],
+      "peopleNum":0
     }
   },
   changeTabs(){
@@ -52,48 +53,76 @@ Page({
     this.handleData()
   },
   handleData(){
-    console.log(this.data.quan1)
-    console.log(this.data.quan2)
-    console.log(this.data.quan3)
     let quantity = this.data.quan1.length+this.data.quan2.length+this.data.quan3.length
     let moneyTemp = 0;
     let dataTemp = [];
+    let numTemp = 50;
+    this.setData({
+      minimum:this.data.result1[0].num
+  });
     this.data.result1.forEach((item,index) => {
-      console.log(item.price)
       let obj={id:item.id}
       if(this.data.quan1.indexOf(index+'')>-1){ 
-        moneyTemp += parseFloat(item.price)
+        moneyTemp += parseFloat(item.price*this.data.discount - 2)
         dataTemp.push(obj)
+        if(item.remainNum<=numTemp){
+          numTemp=item.remainNum
+        }
       }
 
     });
     this.data.result2.forEach((item,index) => {
       let obj={id:item.id}
       if(this.data.quan2.indexOf(index+'')>-1){ 
-        moneyTemp += parseFloat(item.price)
+        moneyTemp += parseFloat(item.price*this.data.discount)
         dataTemp.push(obj)
+        if(item.remainNum<=numTemp){
+          numTemp=item.remainNum
+        }
       }
 
     });
     this.data.result3.forEach((item,index) => {
       let obj={id:item.id}
       if(this.data.quan3.indexOf(index+'')>-1){ 
-        moneyTemp += parseFloat(item.price)
+        moneyTemp += parseFloat(item.price*this.data.discount - 4)
         dataTemp.push(obj)
+        if(item.remainNum<=numTemp){
+          numTemp=item.remainNum
+        }
       }
 
     });
-    if(quantity>=2){
+    if(quantity>2){
       moneyTemp = (moneyTemp * 0.8).toFixed(2)
     }else{
+
       moneyTemp = moneyTemp.toFixed(2)
+
     }
     this.data.msg.money = parseFloat(moneyTemp)
+
     this.data.msg.data = dataTemp
+    this.data.msg.money = moneyTemp
+    console.log(moneyTemp)
     this.setData({
-      price:moneyTemp*100,
-      quantity:quantity
+      price:moneyTemp*this.data.peopleNum*100,
+      quantity:quantity,
+      minimum:numTemp
     });
+
+    if(this.data.peopleNum>this.data.minimum){
+      this.data.peopleNum = this.data.minimum;
+      this.setData({
+        peopleNum: this.data.minimum,
+        price:moneyTemp*this.data.minimum*100
+      });
+      wx.showToast({
+        title: 'Insufficient quantity',
+        icon:'error',
+        duration: 2000
+      })
+    }
   },
 
   toggle1(event) {
@@ -119,6 +148,36 @@ Page({
     });
   },
 
+  onChangeNum(event){
+    let moneyTemp=0;
+    moneyTemp = this.data.msg.money
+
+    if(event.detail>=this.data.minimum){
+      this.data.peopleNum = this.data.minimum;
+      this.setData({
+        peopleNum: this.data.minimum,
+        price:moneyTemp*this.data.minimum*100
+      });
+      wx.showToast({
+        title: 'Insufficient quantity',
+        icon:'error',
+        duration: 2000
+      })
+    }
+    else{
+      console.log(this.data.msg.money);
+      console.log(moneyTemp);
+      console.log(event.detail);
+      this.data.peopleNum = event.detail;
+      this.data.price = moneyTemp*event.detail
+      this.setData({
+        peopleNum: event.detail,
+        price:moneyTemp*event.detail*100
+      });
+    }
+
+  },
+
   onClick(event) {
     const { name } = event.currentTarget.dataset;
     this.setData({
@@ -128,16 +187,24 @@ Page({
   payOrder(){
     if(this.data.quantity==0){
       wx.showToast({
-        title: 'please select course',
-        icon: 'none',
+        title: 'Select at least one course',
+        icon: 'error',
+        duration: 2000
+      })
+      return
+    }
+    if(this.data.peopleNum==0){
+      wx.showToast({
+        title: 'Reserve at least one piece',
+        icon: 'error',
         duration: 2000
       })
       return
     }
     if(this.data.radio==1 && !this.data.bankNum){
       wx.showToast({
-        title: 'enter bank number',
-        icon: 'none',
+        title: 'Input correct card info',
+        icon: 'error',
         duration: 2000
       })
       return
@@ -155,10 +222,10 @@ Page({
     console.log(this.data.msg)
     
     let title = "bank pay"
-    let message = "bank password"
+    let message = "Jump to outside website..."
     if(this.data.radio==1){
       title = "bank pay"
-      message="bank password"
+      message="Jump to outside website..."
     }
     if(this.data.radio==2){
       title = "cash pay"
@@ -166,17 +233,19 @@ Page({
     }
     if(this.data.radio==3){
       title = "weChat pay"
-      message="weChat password"
+      message="weChat password required"
     }
+    this.data.msg.peopleNum=this.data.peopleNum
+    this.data.msg.money=this.data.price/100
     Dialog.confirm({
       title: title,
       message: message,
-      confirmButtonText:"confirm",
-      cancelButtonText:"cancel"
+      confirmButtonText:"Confirm",
+      cancelButtonText:"Cancel"
     }).then(() => {
       orderPay(this.data.msg).then(res=>{
         wx.showToast({
-          title: 'success',
+          title: 'Success',
           icon: 'success',
           duration: 2000
         })
@@ -192,11 +261,9 @@ Page({
     });
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+
   onLoad: function (options) {
-    // options.type=1
+    // options.type=2
     // options.id="751fc9a30ec04407a6237a10e2a5b941"
     getTimes({type:options.type,id:options.id}).then(res=>{
       let result1 = [];
@@ -217,53 +284,48 @@ Page({
     this.setData({
       bankNum:app.globalData.userInfo.bank
     })
+    if(app.globalData.userInfo.vip==1){
+      this.data.discount = 0.8;
+    }
+    else{
+      this.data.discount = 1;
+    }
+this.setData({
+  discount:this.data.discount
+})
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+
   onReady: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
+
   onShow: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
+
   onHide: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
+
   onUnload: function () {
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+
   onPullDownRefresh: function () {
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
+
   onReachBottom: function () {
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
+
   onShareAppMessage: function () {
 
   }

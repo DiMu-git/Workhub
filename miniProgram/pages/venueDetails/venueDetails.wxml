@@ -2,12 +2,14 @@
 <view class="container">
   <view class="venueDetails">
     <view><image src='{{venueDetails.url}}'></image></view>
-    <view class="title"><text>venue:</text>{{venueDetails.name}}</view>
-    <view class="title address"><text>address:</text>{{venueDetails.address}}</view>
-    <van-button type="info" bindtap="toHome" data-item="{{item}}" size="small">reserve</van-button>
+    <view class="title">{{venueDetails.name}}</view>
+    <view class="address"><text>Address: </text>{{venueDetails.address}}</view>
+    <view class="address">
+      <van-button type="info"  bindtap="call" data-item="{{item}}" size="small" color="linear-gradient(to right, #4bb0ff, #6149f6)"><van-icon name="service-o" size="1rem"></van-icon> Contact</van-button>
+    </view>
   </view>
   <van-tabs sticky animated bind:change="changeTabs" line-width="18px">
-    <van-tab title="facility">
+    <van-tab title="FACILITY">
       <view class="facilityCnt">
         <block wx:for="{{facilityList}}" wx:key="*this">
           <view class="infoItem">
@@ -15,12 +17,12 @@
               <image src='{{item.url}}'></image>
             </view>
             <view class="right">
-              <view class="title ellipsis2"><text>venue:</text>{{item.name}}</view>
-              <view class="title"><text>count:</text>{{item.num}}</view>
+              <view class="title ellipsis2">{{item.name}}</view>
               <view class="title reserveBtn">
-                <view><text>price:</text><text class="price">￡{{item.price}}</text></view>
-                <van-button type="info" bindtap="toFacilityDetail" data-item="{{item}}" size="small">reserve</van-button>
+                <view><text>Available: </text>{{item.num}}</view>
+                <van-button type="info" bindtap="toFacilityDetail" data-item="{{item}}" size="small">Reserve</van-button>
               </view>
+              <view class="title"><text>Price:</text><text class="price">￡{{item.price}}</text></view>
             </view>
           </view>
         </block>
@@ -31,10 +33,10 @@
             <view>no data</view>
           </view>
         </view>
-        <view class="noMore" wx:if="{{facilityList.length>4}}">It's all displayed～</view>
+        <view class="noMore" wx:if="{{facilityList.length>4}}">All loaded.</view>
       </view>
     </van-tab>
-    <van-tab title="course">
+    <van-tab title="COURSE">
       <view class="courseCnt">
         <block wx:for="{{courseList}}" wx:key="*this">
           <view class="infoItem">
@@ -42,10 +44,10 @@
               <image src='{{item.url}}'></image>
             </view>
             <view class="right">
-              <view class="title ellipsis2"><text>venue:</text>{{item.name}}</view>
+              <view class="title ellipsis2">{{item.name}}</view>
               <view class="title reserveBtn">
-                <view><text>price:</text><text class="price">￡{{item.price}}</text></view>
-                <van-button type="info"  bindtap="toCourseDetail" data-item="{{item}}" size="small">reserve</van-button>
+                <view><text>Price:</text><text class="price">￡{{item.price}}</text></view>
+                <van-button type="info"  bindtap="toCourseDetail" data-item="{{item}}" size="small">Reserve</van-button>
               </view>
             </view>
           </view>
@@ -56,7 +58,7 @@
             <view>no data</view>
           </view>
         </view>
-        <view class="noMore" wx:if="{{courseList.length>5}}">It's all displayed～</view>
+        <view class="noMore" wx:if="{{courseList.length>5}}">All loaded.</view>
       </view>
     </van-tab>
   </van-tabs>

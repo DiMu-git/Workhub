@@ -59,6 +59,7 @@
 .container .orderListBox .infoItem .right .title {
   font-size: 28rpx;
   font-weight: 600;
+  padding: 10rpx 10rpx;
 }
 .container .orderListBox .infoItem .right .title text {
   font-weight: 500;
