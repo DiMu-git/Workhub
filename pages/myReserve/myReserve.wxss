@@ -1,0 +1,77 @@
+.container {
+  background: #F7F8FA;
+}
+.container .van-tabs__nav {
+  width: 100%;
+}
+.container .van-tabs__nav .van-tab--active {
+  color: var(--themeColor);
+  font-size: var(--activeFontSize);
+  font-weight: 500;
+}
+.container .van-tabs__nav .van-tabs__line {
+  background-color: var(--themeColor);
+}
+.container .tabsBox {
+  position: fixed;
+  top: 0rpx;
+  z-index: 5;
+  width: 750rpx;
+}
+.container .orderListBox {
+  padding-top: 88rpx;
+  border-top: 14rpx solid #F7F7F7;
+}
+.container .orderListBox .code {
+  background: #fff;
+  padding: 30rpx 36rpx 0rpx 36rpx;
+  font-size: 24rpx;
+}
+.container .orderListBox .code text {
+  font-weight: 500;
+}
+.container .orderListBox .infoItem {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 36rpx;
+}
+.container .orderListBox .infoItem:not(:last-child) {
+  border-bottom: 1px solid #E5E5E5;
+}
+.container .orderListBox .infoItem .left image {
+  width: 200rpx;
+  height: 156rpx;
+  border-radius: 20rpx;
+}
+.container .orderListBox .infoItem .right {
+  width: 458rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container .orderListBox .infoItem .right .title {
+  font-size: 28rpx;
+}
+.container .orderListBox .infoItem .right .title text {
+  font-weight: 500;
+}
+.container .orderListBox .infoItem .right .title .price {
+  color: red;
+}
+.container .orderListBox .infoItem .right .reserveBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .orderListBox .btnBox {
+  background: #fff;
+  padding: 0 36rpx;
+  text-align: right;
+}
+.container .orderListBox .btnBox:not(:last-child) {
+  margin-bottom: 14rpx;
+}
+.container .orderListBox .btnBox .van-button--small {
+  margin: 10rpx;
+}

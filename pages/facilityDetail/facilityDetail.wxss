@@ -1,0 +1,47 @@
+.container {
+  background: #F7F8FA;
+  min-height: calc(100% - 180rpx);
+  margin-bottom: 100rpx;
+  padding-bottom: 170rpx;
+}
+.container .bigTitle {
+  padding: 0 36rpx;
+  line-height: 80rpx;
+  font-weight: 500;
+  font-size: 34rpx;
+}
+.container .list .value-class {
+  flex: none !important;
+}
+.container .list .van-cell {
+  align-items: center;
+}
+.container .list .van-cell .date {
+  font-weight: 500;
+}
+.container .list .van-cell .numBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 36rpx;
+}
+.container .list .van-cell .numBox .price {
+  color: red;
+}
+.container .list .van-cell .numBox text {
+  font-weight: 500;
+}
+.container .paywayBox {
+  margin-top: 36rpx;
+}
+.container .paywayBox .paywayList .bankNum {
+  display: flex;
+  align-items: center;
+}
+.container .paywayBox .paywayList .bankNum .van-cell {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.container .paywayBox .paywayList .bankNum .bankNumInput {
+  width: calc(100% - 100rpx);
+}

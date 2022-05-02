@@ -1,0 +1,79 @@
+.container{
+  background: #F7F8FA;
+  .van-tabs__nav{
+    width: 100%;
+    .van-tab--active{
+      color:var(--themeColor);
+      font-size: var(--activeFontSize);
+      font-weight: 500;
+    }
+    .van-tabs__line{
+      background-color:var(--themeColor);
+    }
+  }
+  .tabsBox{
+    position: fixed;
+    top: 0rpx;
+    z-index:5;
+    width: 750rpx;
+  }
+  .orderListBox{
+    padding-top: 88rpx;
+    border-top:14rpx solid #F7F7F7;
+    .code{
+      background: #fff;
+      padding: 30rpx 36rpx 0rpx 36rpx; 
+      font-size: 24rpx;
+      text{
+        font-weight: 500;
+      }
+    }
+    .infoItem{
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      padding: 30rpx 36rpx;
+      &:not(:last-child){
+        border-bottom: 1px solid #E5E5E5;
+      }
+      .left{
+        image{
+          width: 200rpx;
+          height: 156rpx;
+          border-radius: 20rpx;
+        }
+      }
+      .right{
+        width: 458rpx;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .title{
+          font-size: 28rpx;
+          text{
+            font-weight: 500;
+          }   
+          .price{
+            color: red;
+          }
+        }
+        .reserveBtn{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    }
+    .btnBox{
+      background: #fff;
+      padding: 0 36rpx;
+      text-align: right;
+      &:not(:last-child){
+        margin-bottom: 14rpx;
+      }
+      .van-button--small{
+        margin: 10rpx;
+      }
+    }
+  }
+}

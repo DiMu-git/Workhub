@@ -1,0 +1,82 @@
+/* pages/home/home.less */
+.container .search {
+  padding: 20rpx 36rpx;
+}
+.container .search .van-search {
+  padding: 0rpx;
+}
+.container .search .van-search__content {
+  background-color: #F4F4F4;
+}
+.container .search .van-search__content input {
+  font-size: 24rpx;
+}
+.container .search .van-icon-search {
+  color: #A7A7A7;
+  font-size: 28rpx;
+}
+.container .swiper-box {
+  padding: 0px 36rpx;
+  height: 314rpx;
+}
+.container .swiper-box .slide-image {
+  width: 100%;
+  height: 314rpx;
+  border-radius: 26rpx;
+}
+.container .swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal {
+  margin-bottom: 2rpx;
+}
+.container .swiper-box .wx-swiper-dot {
+  width: 6rpx;
+  height: 6rpx;
+  display: inline-flex;
+  border-radius: 6rpx;
+  background: #ffffff;
+}
+.container .swiper-box .wx-swiper-dot-active {
+  width: 24rpx;
+}
+.container .venueCnt {
+  color: #333333;
+}
+.container .venueCnt .infoTitle {
+  padding: 0rpx 36rpx;
+  margin-top: 30rpx;
+  font-weight: 500;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+}
+.container .venueCnt .infoTitle image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.container .venueCnt .content .infoItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 36rpx;
+}
+.container .venueCnt .content .infoItem:not(:last-child) {
+  border-bottom: 1px solid #E5E5E5;
+}
+.container .venueCnt .content .infoItem .left image {
+  width: 200rpx;
+  height: 156rpx;
+  border-radius: 20rpx;
+}
+.container .venueCnt .content .infoItem .right {
+  width: 458rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container .venueCnt .content .infoItem .right .title {
+  height: 68rpx;
+  font-size: 28rpx;
+  line-height: 34rpx;
+}
+.container .venueCnt .content .infoItem .right .title text {
+  font-weight: 500;
+}

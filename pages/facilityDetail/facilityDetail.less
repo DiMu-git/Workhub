@@ -1,0 +1,52 @@
+.container{
+  background: #F7F8FA;
+  min-height: calc(100% - 180rpx);
+  margin-bottom: 100rpx;
+  padding-bottom:170rpx;
+  .bigTitle{
+    padding: 0 36rpx;
+    line-height: 80rpx;
+    font-weight: 500;
+    font-size: 34rpx;
+  }
+  .list{
+    .value-class {
+      flex: none !important;
+    }
+    .van-cell{
+      align-items: center;
+      .date{
+        font-weight: 500;
+      }
+      .numBox{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 36rpx;
+        .price{
+          color: red;
+        }
+        text{
+          font-weight: 500;
+        }
+      }
+    }
+
+  }
+  .paywayBox{
+    margin-top: 36rpx;
+    .paywayList{
+      .bankNum{
+        display: flex;
+        align-items: center;
+        .van-cell{
+          padding-top: 0px;
+          padding-bottom: 0px;
+        }
+        .bankNumInput{
+          width: calc(100% - 100rpx);
+        }
+      }
+    }
+  }
+}

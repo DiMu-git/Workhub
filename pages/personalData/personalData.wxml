@@ -1,0 +1,62 @@
+<!--pages/personalData/personalData.wxml-->
+<view class="container">
+  <van-cell class="header">
+    <view slot="title">
+      <view class="van-cell-text">
+        <text>avatar</text>
+        <view bindtap="getUserProfile" class="photo"> 
+          <image src="{{userInfo.url}}"></image>
+        </view>
+      </view>
+    </view>
+  </van-cell>
+  <van-cell>
+    <view slot="title">
+      <view class="van-cell-text">
+        <text>nickName</text>
+        <text>{{userInfo.nickName}}</text>
+      </view>
+    </view>
+  </van-cell>
+  <van-cell class="sexContent">
+    <view slot="title">
+      <view class="van-cell-text">
+        <text>sex</text>
+        <van-radio-group value="{{ userInfo.userGender }}" bind:change="sexChange">
+          <view class="sexGroup">
+            <van-radio name="1">male</van-radio>
+            <van-radio name="0">female</van-radio>
+          </view>
+        </van-radio-group>
+      </view>
+    </view>
+  </van-cell>
+  <van-cell  class="phoneContent">
+    <view slot="title">
+      <view class="van-cell-text">
+        <text>phone</text>
+        <van-field
+          model:value="{{ tel }}"
+          placeholder="please enter phone"
+          border="{{ false }}"
+        />
+      </view>
+    </view>
+  </van-cell>
+  <van-cell  class="phoneContent">
+    <view slot="title">
+      <view class="van-cell-text">
+        <text>mail</text>
+        <van-field
+          model:value="{{ mail }}"
+          placeholder="please enter mail"
+          border="{{ false }}"
+        />
+      </view>
+    </view>
+  </van-cell>
+  <view class="saveContent">
+    <van-button round type="info" block bindtap="save">save</van-button>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

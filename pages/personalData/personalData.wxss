@@ -1,0 +1,36 @@
+.container .van-cell-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #A7A7A7;
+  font-size: 30rpx;
+}
+.container .header .van-cell-text .photo image {
+  width: 126rpx;
+  height: 126rpx;
+  margin-right: 52rpx;
+  border-radius: 50%;
+}
+.container .sexContent .van-cell-text .sexGroup {
+  display: flex;
+}
+.container .sexContent .van-cell-text .sexGroup .van-radio {
+  margin-left: 14rpx;
+}
+.container .phoneContent .van-cell-text button {
+  display: inline-block;
+  margin: 0px;
+  background-color: transparent;
+  line-height: 48rpx;
+  color: #A7A7A7;
+  padding: 0rpx;
+  font-size: 30rpx;
+}
+.container .phoneContent .van-cell-text button::after {
+  border: 0px;
+}
+.container .saveContent {
+  margin-top: 160rpx;
+  padding: 0rpx 70rpx;
+  font-size: 36rpx;
+}
