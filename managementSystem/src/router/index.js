@@ -95,7 +95,7 @@ export const asyncRoutes = [
         path: 'dashboard',
         component: () => import('@/views/wsHome/Dashboard'),
         name: 'Dashboard',
-        meta: { title: 'Dashboard', icon: 'dashboard'}
+        meta: { title: 'Home', icon: 'dashboard'}
       },
     ]
   },

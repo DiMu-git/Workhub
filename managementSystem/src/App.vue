@@ -71,7 +71,7 @@ export default {
   display: flex;
   align-items: center;
   .svg-icon{
-    font-size: 16px;  
+    font-size: 16px;
   }
 }
 

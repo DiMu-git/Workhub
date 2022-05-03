@@ -3,7 +3,7 @@
     <div class="search_container">
       <el-form :model="searchParams" :inline="true" class="searchformContent"  size="small">
         <el-row>
-          <el-form-item label="nickName">
+          <el-form-item label="User Name">
             <el-input v-model="searchParams.nickName" placeholder="Please enter" clearable style="width:180px"></el-input>
           </el-form-item>
         </el-row>

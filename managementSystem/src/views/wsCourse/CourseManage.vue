@@ -3,7 +3,7 @@
     <div class="search_container">
       <el-form :model="searchParams" :inline="true" class="searchformContent"  size="small">
         <el-row>
-          <el-form-item label="courseName">
+          <el-form-item label="Course Name">
             <el-input v-model="searchParams.name" placeholder="Please enter" clearable style="width:180px"></el-input>
           </el-form-item>
         </el-row>
@@ -42,14 +42,8 @@
         <el-table-column prop="venueName" label="venueName" min-width="150px">
           <template slot-scope="scope"> {{scope.row.venueName?scope.row.venueName:'--'}}</template>
         </el-table-column>
-        <el-table-column prop="morning" label="morning" width="90px">
-          <template slot-scope="scope"> {{scope.row.morning?scope.row.morning:'--'}}</template>
-        </el-table-column>
-        <el-table-column prop="afternoon" label="afternoon" width="100px">
-          <template slot-scope="scope"> {{scope.row.afternoon?scope.row.afternoon:'--'}}</template>
-        </el-table-column>
-        <el-table-column prop="night" label="night">
-          <template slot-scope="scope"> {{scope.row.night?scope.row.night:'--'}}</template>
+        <el-table-column prop="num" label="number" width="90px">
+          <template slot-scope="scope"> {{scope.row.num?scope.row.num:'--'}}</template>
         </el-table-column>
         <el-table-column prop="price" label="price">
           <template slot-scope="scope">£ {{scope.row.price?scope.row.price:'--'}}</template>
@@ -116,21 +110,29 @@
 						</el-col>
 					</el-row>
           <el-row >
-						<el-col :span="12">
-              <el-form-item label="morning" prop="morning">
-                <el-input type="number" v-model="msg.morning" autocomplete="off" placeholder="Please enter count"></el-input>
-              </el-form-item>	
-						</el-col>
-						<el-col :span="12">
-              <el-form-item label="afternoon" prop="afternoon">
-                <el-input type="number" v-model="msg.afternoon" autocomplete="off" placeholder="Please enter count"></el-input>
-              </el-form-item>	
+						<el-col :span="24">
+              <el-form-item label="time">
+                <el-select
+                  v-model="msg.time"
+                  class="filter-item"
+                  placeholder="Choose tiem"
+                  multiple
+                  style="width: 280px; "
+                >
+                  <el-option
+                    v-for="item in options"
+                    :key="item.key"
+                    :label="item.label"
+                    :value="item.key"
+                  />
+                </el-select>
+            </el-form-item>
 						</el-col>
 					</el-row>
           <el-row >
 						<el-col :span="12">
-              <el-form-item label="night" prop="night">
-                <el-input type="number" v-model="msg.night" autocomplete="off" placeholder="Please enter count"></el-input>
+              <el-form-item label="number" prop="num">
+                <el-input type="number" v-model="msg.num" autocomplete="off" placeholder="Please enter number"></el-input>
               </el-form-item>	
 						</el-col>
 						<el-col :span="12">
@@ -161,7 +163,6 @@
               </el-form-item>	
 						</el-col>
 					</el-row>
-          
 				</el-form>
 				<div slot="footer" class="dialog-footer">
 					<el-button size="small" @click="visible = false">cancel</el-button>
@@ -201,14 +202,26 @@ export default {
         pageSize:10,
         name:"",
       },
+      options: [
+        { label: "10:00-11:00", key: "10:00-11:00" },
+        { label: "11:00-12:00", key: "11:00-12:00" },
+        { label: "12:00-13:00", key: "12:00-13:00" },
+        { label: "13:00-14:00", key: "13:00-14:00" },
+        { label: "14:00-15:00", key: "14:00-15:00" },
+        { label: "15:00-16:00", key: "15:00-16:00" },
+        { label: "16:00-17:00", key: "16:00-17:00" },
+        { label: "17:00-18:00", key: "17:00-18:00" },
+        { label: "19:00-20:00", key: "19:00-20:00" },
+        { label: "20:00-21:00", key: "20:00-21:00" },
+        { label: "21:00-22:00", key: "21:00-22:00" },
+      ],
       rules: {
         venueId: [{ required: true, message: 'venue cannot be empty', trigger: 'change' }],
         name: [{ required: true, message: 'course name cannot be empty', trigger: 'blur' }],
         startDate: [{ required: true, message: 'startDate cannot be empty', trigger: 'change' }],
         endDate: [{ required: true, message: 'endDate cannot be empty', trigger: 'change' }],
-        morning: [{ required: true, message: 'count cannot be empty', trigger: 'blur' }],
-        afternoon: [{ required: true, message: 'count cannot be empty', trigger: 'blur' }],
-        night: [{ required: true, message: 'count cannot be empty', trigger: 'blur' }],
+        time: [{ required: true, message: 'time cannot be empty', trigger: 'change' }],
+        num: [{ required: true, message: 'number cannot be empty', trigger: 'blur' }],
         price: [{ required: true, message: 'price cannot be empty', trigger: 'blur' }],
         url: [{ required: true, message: 'picture cannot be empty', trigger: 'change' }],
       },
@@ -363,12 +376,11 @@ export default {
             "venueName": "",
             "name": "",
             "address": null,
-            "remark": "Facility introduction",
+            "remark": "Course introduction",
             "startDate": "",
             "endDate": "",
-            "morning": 0,
-            "afternoon": 0,
-            "night": 0,
+            "time": [],
+            "num": 0,
             "price": 0,
             "url": null,
 
@@ -399,10 +411,10 @@ export default {
         return `${y}-${m}`
       }else if(pattern.toLowerCase() == 'yyyy-mm-dd'){
         return `${y}-${m}-${d}`
-      }else{
+      }else {
         var hh = dt.getHours() < 10? "0" + dt.getHours() : dt.getHours();
         var mm = dt.getMinutes() < 10? "0" + dt.getMinutes() : dt.getMinutes();
-        var ss = dt.getSeconds() < 10? "0" + dt.getSeconds() : dt.getSeconds();
+        var ss = dt.getSeconds() < 10? "0" + dt.getSeconds() : dt.getSeconds()
         return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
       }
     },

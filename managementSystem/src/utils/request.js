@@ -23,7 +23,7 @@ let loading;
 function startLoading() {
   loading = Loading.service({
     lock: true,
-    text: "加载中...",
+    text: "Loading...",
     // background: "deepgray",
     background: "rgba(0,0,0,0.7)"
   });

@@ -3,13 +3,13 @@
     <div class="search_container">
       <el-form :model="searchParams" :inline="true" class="searchformContent"  size="small">
         <el-row>
-          <el-form-item label="name">
+          <el-form-item label="Name">
             <el-input v-model="searchParams.name" placeholder="Please enter" clearable style="width:180px"></el-input>
           </el-form-item>
-          <el-form-item label="venueName">
+          <el-form-item label="Venue Name">
             <el-input v-model="searchParams.venueName" placeholder="Please enter" clearable style="width:180px"></el-input>
           </el-form-item>
-          <el-form-item label="code">
+          <el-form-item label="Code">
             <el-input v-model="searchParams.code" placeholder="Please enter" clearable style="width:320px"></el-input>
           </el-form-item>
         </el-row>
@@ -22,7 +22,7 @@
           </el-form-item>
         </el-row>
       </el-form>
-      
+
     </div>
     <div class="table_container">
       <el-table
@@ -30,10 +30,10 @@
 				:data="tableData"
 				tooltip-effect="dark"
 				size="medium"
-				style="width: 100%;"  
+				style="width: 100%;"
 				:header-cell-style="{textAlign: 'center',color:'#fff',background:'#CFC39F',padding: '6px 0px'}"
-				:cell-style="{textAlign: 'center'}" 
-        @row-click="clickRow"   
+				:cell-style="{textAlign: 'center'}"
+        @row-click="clickRow"
 				@selection-change="handleSelectionChange"
 				>
         <el-table-column type="selection" fixed width="50px"></el-table-column>
@@ -56,14 +56,14 @@
           <template slot-scope="scope"> {{scope.row.time?scope.row.time+scope.row.timeType:'--'}}</template>
         </el-table-column>
         <el-table-column prop="flag" label="state">
-          <template slot-scope="scope"> 
+          <template slot-scope="scope">
             <span v-if="scope.row.flag!=null">{{flagList[scope.row.flag+1].val}}</span>
             <span v-else>--</span>
           </template>
           <!-- 0, used; 1, paid; 2, unpaid; 3, refunded; -1, reservation failed -->
         </el-table-column>
         <el-table-column prop="url" label="picture">
-          <template slot-scope="scope"> 
+          <template slot-scope="scope">
             <img class="tableImg" v-if="scope.row.url" :src="scope.row.url" alt="">
             <span v-else>--</span>
           </template>
@@ -75,7 +75,7 @@
         </el-table-column>
         <el-table-column prop="id" label="oper" width="210px" fixed="right">
           <template slot-scope="scope">
-            <el-button size="mini" type="success" :disabled="scope.row.flag==0" @click="changeState(scope.row)">changeState</el-button>
+            <el-button size="mini" type="success" :disabled="scope.row.flag==0" @click="changeState(scope.row)">ChangeState</el-button>
             <el-button size="mini" type="success" :disabled="scope.row.flag!=0&&scope.row.flag!=1" @click="receipt(scope.row)">receipt</el-button>
           </template>
         </el-table-column>
@@ -119,7 +119,7 @@
 					<el-button size="small" type="primary" @click="save('ruleForm')" >save</el-button>
 				</div>
 			</el-dialog>
-      <el-dialog title="Detail page" :visible.sync="isShowReceipt" center class="defaultDialog" :close-on-click-modal="false" :close-on-press-escape="false">
+      <el-dialog title="Receipt" :visible.sync="isShowReceipt" center class="defaultDialog" :close-on-click-modal="false" :close-on-press-escape="false">
 				<div class="printBox" id="printId">
           <table style="width:100%;">
             <tr class="header">
@@ -131,17 +131,15 @@
           <table class="tableCnt" style="width:100%;">
             <tr><td colspan="2" style="font-size:22px;height: 40px;line-height: 40px;"><span>code:</span>{{receiptObj.code}}</td></tr>
             <tr><td colspan="2" style="font-size:22px;height: 40px;line-height: 40px;"><span>name:</span>{{receiptObj.name}}</td></tr>
-            <tr><td colspan="2" style="font-size:22px;height: 40px;line-height: 40px;"><span>venueName:</span>{{receiptObj.venueName}}</td></tr>
-            <tr><td colspan="2" style="font-size:22px;height: 40px;line-height: 40px;"><span>reserveTime:</span>{{receiptObj.time}} {{receiptObj.timeType}}</td></tr>
+            <tr><td colspan="2" style="font-size:22px;height: 40px;line-height: 40px;"><span>Venue Name:</span>{{receiptObj.venueName}}</td></tr>
+            <tr><td colspan="2" style="font-size:22px;height: 40px;line-height: 40px;"><span>Reserve Time:</span>{{receiptObj.time}} {{receiptObj.timeType}}</td></tr>
             <tr>
               <td style="font-size:22px;height: 40px;line-height: 40px;"><span>state:</span>{{receiptObj.state}}</td>
               <td style="font-size:22px;height: 40px;line-height: 40px;"><span>price:</span>£ {{receiptObj.price}}</td>
-            </tr> 
-            <tr><td colspan="2" style="font-size:22px;height: 40px;line-height: 40px;"><span>createTime:</span>{{receiptObj.createTime | dateFormat}}</td></tr>
+            </tr>
+            <tr><td colspan="2" style="font-size:22px;height: 40px;line-height: 40px;"><span>Create Time:</span>{{receiptObj.createTime|dateFormat()}}</td></tr>
             <tr><td colspan="2" style="text-align: center;"><img src="@/assets/images/qrcode.png" alt=""></td></tr>
           </table>
-
-
         </div>
 
 				<div slot="footer" class="dialog-footer">
@@ -186,7 +184,7 @@ export default {
         code:"",
       },
       rules: {},
-      
+
       // 0, used; 1, paid; 2, unpaid; 3, refunded; -1, reservation failed
       flagList:[
         {id:-1,val:"failed"},
@@ -214,31 +212,31 @@ export default {
         this.tableData = data.content;
         this.total=data.totalElements
       })
-    },  
+    },
     changeState(item){
       this.msg = {
         id:item.id,
         flag:item.flag
       }
       this.nowFlag=item.flag
-      this.visible = true;     
+      this.visible = true;
     },
     receipt(item){
       console.log(item)
       this.receiptObj = JSON.parse(JSON.stringify(item))
       this.receiptObj.state = this.flagList[this.receiptObj.flag+1].val
-      this.isShowReceipt = true;     
+      this.isShowReceipt = true;
     },
     add(){
       this.reset().then((res)=>{
-        this.visible = true;     
-      }) 
+        this.visible = true;
+      })
     },
     edit(){
       if(this.multipleSelection.length!=1){
 					this.$alert('', 'Please select a piece of data', {
             confirmButtonText: 'confirm',
-          });	
+          });
           return
 				}
         let msg = this.multipleSelection[0];
@@ -249,7 +247,7 @@ export default {
       if(this.multipleSelection.length==0){
         this.$alert('', 'Please select the data to delete', {
           confirmButtonText: 'confirm',
-        });	
+        });
         return
       }
       let ids = [];
@@ -280,7 +278,7 @@ export default {
         this.$message({
           type: 'info',
           message: 'cancelled'
-        });          
+        });
       });
     },
     save(formName){
@@ -298,7 +296,7 @@ export default {
               return
             }
           })
-        } 
+        }
       });
     },
     handleAvatarSuccess(res, file) {
@@ -340,7 +338,7 @@ export default {
     search(){
       this.pageNo=1;
       this.init()
-    },  
+    },
     //reset data
     reset(){
       return new Promise((resolve, reject) => {
@@ -349,12 +347,12 @@ export default {
             "id":"",
             "flag":1//0, used; 1, paid; 2, unpaid; 3, refunded; -1, reservation failed
           }
-          
+
           resolve('reset ')
         }).catch((error) => {
           console.log(error)
         })
-      
+
       })
     }
   },

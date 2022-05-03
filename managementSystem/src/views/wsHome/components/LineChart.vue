@@ -78,6 +78,22 @@ export default {
           containLabel: true
         },
         tooltip: {
+           formatter: function(params) {
+                  	let str = '';
+                  	params.forEach((item, idx) => {
+                  		str += `${item.marker}${item.seriesName}: ${item.data}`
+                  		switch (idx){
+                  		    case 0:
+                  		        str += 'people';
+                  		        break;
+                  		    case 1:
+                  		        str += 'pound';
+                  		        break;
+                  		}
+                  		str += idx === params.length -1? '': '<br/>'
+                  	})
+                  	return str
+                  },
           trigger: 'axis',
           axisPointer: {
             type: 'cross'

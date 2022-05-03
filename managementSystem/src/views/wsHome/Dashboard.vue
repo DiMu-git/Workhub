@@ -56,25 +56,6 @@ import BarChart from './components/BarChart'
 
 import {getStatistics} from "api/workingShop";
 
-// const lineChartData = {
-  // newVisitis: {
-  //   expectedData: [100, 120, 161, 134, 105, 160, 165],
-  //   actualData: [120, 82, 91, 154, 162, 140, 145]
-  // },
-  // messages: {
-  //   expectedData: [200, 192, 120, 144, 160, 130, 140],
-  //   actualData: [180, 160, 151, 106, 145, 150, 130]
-  // },
-  // purchases: {
-  //   expectedData: [80, 100, 121, 104, 105, 90, 100],
-  //   actualData: [120, 90, 100, 138, 142, 130, 130]
-  // },
-  // shoppings: {
-  //   expectedData: [130, 140, 141, 142, 145, 150, 160],
-  //   actualData: [120, 82, 91, 154, 162, 140, 130]
-  // }
-// }
-
 export default {
   name: 'Dashboard',
   components: {
@@ -114,7 +95,7 @@ export default {
     getStatistics(){
       getStatistics(this.searchParams).then(res=>{
         this.statistics = res.data
-      
+
         let count = res.data.line.count;
         let pay = res.data.line.pay;
 
@@ -129,10 +110,10 @@ export default {
         pay.forEach(item => {
           venueRevenue.push(item.total)
         });
-        
-        this.lineChartData.venueReserveNumber=venueReserveNumber;      
-        this.lineChartData.venueRevenue=venueRevenue;      
-        this.lineChartData.xAxisData=xAxisData;   
+
+        this.lineChartData.venueReserveNumber=venueReserveNumber;
+        this.lineChartData.venueRevenue=venueRevenue;
+        this.lineChartData.xAxisData=xAxisData;
 
         let pieData1=[];
         let pieData2=[];
@@ -144,7 +125,7 @@ export default {
         let piePay = res.data.pie.pay;
         pieCount.forEach(item => {
           let obj={
-            value: item.total, name: item.venueName 
+            value: item.total, name: item.venueName
           }
           pieData1.push(obj)
           pieLegendData1.push(item.venueName)
@@ -152,7 +133,7 @@ export default {
 
         piePay.forEach(item => {
           let obj={
-            value: item.total, name: item.venueName 
+            value: item.total, name: item.venueName
           }
           pieData2.push(obj)
           pieLegendData2.push(item.venueName)
@@ -162,7 +143,7 @@ export default {
         this.pieLegendData1=pieLegendData1
         this.pieData2=pieData2
         this.pieLegendData2=pieLegendData2
-        debugger   
+        debugger
         console.log(res.data)
       })
     },

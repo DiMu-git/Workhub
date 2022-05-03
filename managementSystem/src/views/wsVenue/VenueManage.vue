@@ -3,7 +3,7 @@
     <div class="search_container">
       <el-form :model="searchParams" :inline="true" class="searchformContent"  size="small">
         <el-row>
-          <el-form-item label="venueName">
+          <el-form-item label="Venue Name">
             <el-input v-model="searchParams.name" placeholder="Please enter" clearable style="width:180px"></el-input>
           </el-form-item>
         </el-row>
@@ -41,6 +41,9 @@
         </el-table-column>
         <el-table-column prop="address" label="address">
           <template slot-scope="scope"> {{scope.row.address?scope.row.address:'--'}}</template>
+        </el-table-column>
+        <el-table-column prop="tele" label="tele">
+          <template slot-scope="scope"> {{scope.row.tele?scope.row.tele:'--'}}</template>
         </el-table-column>
         <el-table-column prop="url" label="picture">
           <template slot-scope="scope"> 
@@ -80,6 +83,13 @@
 						<el-col :span="24">
               <el-form-item label="address" prop="address">
                 <el-input v-model="msg.address" autocomplete="off" placeholder="Please enter address"></el-input>
+              </el-form-item>	
+						</el-col>
+					</el-row>
+          <el-row >
+						<el-col :span="24">
+              <el-form-item label="tele" prop="tele">
+                <el-input v-model="msg.tele" autocomplete="off" placeholder="Please enter Contact Number"></el-input>
               </el-form-item>	
 						</el-col>
 					</el-row>
@@ -141,6 +151,7 @@ export default {
       rules: {
         name: [{ required: true, message: 'name cannot be empty', trigger: 'blur' }],
         address: [{ required: true, message: 'address cannot be empty', trigger: 'blur' }],
+        tele: [{ required: true, message: 'contect number cannot be empty', trigger: 'blur' }],
         url: [{ required: true, message: 'picture cannot be empty', trigger: 'change' }],
       },
     }
@@ -278,6 +289,7 @@ export default {
           this.msg={
             "name": "",
             "address": "",
+            "tele": "",
             "url": ""
           }
           
