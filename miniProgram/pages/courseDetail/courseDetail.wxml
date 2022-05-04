@@ -18,7 +18,7 @@
               <view slot="title">
                 <view class="date">{{item.time}}        {{item.duringTime}}</view>
                 <view class="numBox">
-                  <view class="price">￡{{item.price*discount-2}}</view>
+                  <view class="price">￡{{item.price*discount-2}} per {{item.unit}}</view>
                   <view><text>Available: </text>{{item.remainNum}}</view>
                   <view><text>Total :</text>{{item.num}}</view>
                 </view>
@@ -49,7 +49,7 @@
               <view slot="title">
                 <view class="date">{{item.time}}        {{item.duringTime}}</view>
                 <view class="numBox">
-                  <view class="price">￡{{item.price*discount-2}}</view>
+                  <view class="price">￡{{item.price*discount-2}} per {{item.unit}}</view>
                   <view><text>Available: </text>{{item.remainNum}}</view>
                   <view><text>Total :</text>{{item.num}}</view>
                 </view>
@@ -80,7 +80,7 @@
               <view slot="title">
                 <view class="date">{{item.time}} {{item.duringTime}}</view>
                 <view class="numBox">
-                  <view class="price">￡{{item.price*discount-2}}</view>
+                  <view class="price">￡{{item.price*discount-2}} per {{item.unit}}</view>
                   <view><text>Available: </text>{{item.remainNum}}</view>
                   <view><text>Total :</text>{{item.num}}</view>
                 </view>
