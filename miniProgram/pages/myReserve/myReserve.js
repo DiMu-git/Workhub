@@ -10,7 +10,8 @@ Page({
     activeNameNow:"-1",
     total:0,
     totalArr:[0,0,0,0,0],
-    showQrcode:false
+    showQrcode:false,
+    chance:2,
   },
   changeTabs(e){
     this.setData({
@@ -36,15 +37,27 @@ Page({
   },
   toCancelFlag(e){
     let item = e.currentTarget.dataset.item
+
     Dialog.confirm({
       title: 'tips',
       message: 'confirm cancel?',
       confirmButtonText:"confirm",
       cancelButtonText:"cancel"
     })
+
       .then(() => {
+        if(this.data.chance<=0){
+          wx.showToast({title: 'There is only 3 chances to cancel per day',icon:'none',
+        duration:1500});
+          return;
+        }
+        this.data.chance-=1,
         refund({id:item.id}).then(res=>{
-          wx.showToast({title: 'cancel succeeded',icon:'succee'})
+          wx.showToast({
+            title: 'Cancel chance remaining: '+ this.data.chance,
+            icon: 'none',
+            duration: 1500
+        })
           let userId = app.globalData.userInfo.id;
           this.getOrdersByUser(userId)
         })
@@ -56,7 +69,6 @@ Page({
   },
   getOrdersByUser(userId){
     getOrdersByUser({userId:userId}).then(res=>{
-      console.log(res)
       let totalArr = [0,0,0,0,0]
       res.forEach(item => {
         let index = item.flag + 1
@@ -71,10 +83,8 @@ Page({
   },
   onLoad: function (options) {
     let userId = app.globalData.userInfo.id;
-    console.log(userId);
     // let userId = "o8pAY46lJawP36HhBoime8_xJhIM"
     this.getOrdersByUser(userId)
-    console.log(this.data.orderList)
   },
 
   onReady: function () {

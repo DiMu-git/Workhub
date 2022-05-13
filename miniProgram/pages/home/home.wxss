@@ -1,4 +1,5 @@
 .container {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   background: #F7F8FA;
 }
 .container .van-tabs__nav {
@@ -27,7 +28,6 @@
   margin-top: 10rpx;
   font-weight: 700;
   font-size: 40rpx;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   align-items: center;
 }
@@ -63,7 +63,6 @@
 }
 .container .orderListBox .infoItem .right .title text {
   font-weight: 500;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container .orderListBox .infoItem .right .title .price {
   color: red;

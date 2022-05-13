@@ -9,9 +9,9 @@ Page({
    */
   data: {
     bannerList:[{
-      imgUrl:'../../images/icon/member.png',
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/us1.jpg',
     },{
-      imgUrl:'../../images/icon/premium.png',
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/us2.jpg',
     }],//rotation list
     venueList:[],//venue list
   },
@@ -56,7 +56,7 @@ Page({
   onShareAppMessage: function () {
     return{
       title:"workingshop",
-      imageUrl:"/images/icon/logo.png"
+      imageUrl:"http://42.193.41.204:8088/workhub/pic/logo.png"
     }
   },
 })

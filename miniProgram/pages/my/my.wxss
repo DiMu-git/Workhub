@@ -6,7 +6,6 @@
 .baseInfo .vipIcon {
   width: 60rpx;
   height: 60rpx;
-  position: absolute;
 }
 .baseInfo .info {
   display: flex;

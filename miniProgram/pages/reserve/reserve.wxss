@@ -1,4 +1,7 @@
 /* pages/home/home.less */
+.container {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 .container .search {
   padding: 20rpx 36rpx;
 }
@@ -46,7 +49,6 @@
   margin-top: 10rpx;
   font-weight: 700;
   font-size: 40rpx;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   align-items: center;
 }
@@ -82,7 +84,6 @@
 }
 .container .venueCnt .content .infoItem .right .title text {
   font-weight: 500;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container .venueCnt .content .infoItem .right .title .ven {
   font-size: 38rpx;

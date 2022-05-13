@@ -6,22 +6,22 @@
         <image class="header" src="{{userInfo.url}}"></image>
       </view>
       <view wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}  
-        <image wx:if="{{userInfo.vip==1}}" class="vipIcon" src="../../images/icon/vipIcon.png"></image>
+        <image wx:if="{{userInfo.vip==1}}" class="vipIcon" src="http://42.193.41.204:8088/workhub/pic/vipIcon.png"></image>
       </view>
       <view wx:else>
         <button class="loginBtn" bindtap="getUserProfile">Click login</button>
       </view>
     </view>
     <view class="right" wx:if="{{userInfo.nickName}}" bindtap="toPersonalData">
-      <image src="../../images/icon/myEdit@2x.png"></image>
+      <image src="http://42.193.41.204:8088/workhub/pic/edit.png"></image>
     </view>
   </view>
 </view>
 
 <view class="listContent1">
   <view class="iconAndTitle">
-    <image wx:if="{{userInfo.vip == 1}}" src='../../images/icon/premium.png'></image>
-    <image wx:if="{{userInfo.vip != 1}}" src='../../images/icon/member.png'></image>
+    <image wx:if="{{userInfo.vip == 1}}" src='http://42.193.41.204:8088/workhub/pic/premium.png'></image>
+    <image wx:if="{{userInfo.vip != 1}}" src='http://42.193.41.204:8088/workhub/pic/member.png'></image>
   </view>
 </view>
 
@@ -29,7 +29,7 @@
   <van-cell is-link bindtap="toRecharge">
     <view slot="title">
       <view class="iconAndTitle">
-        <image src='../../images/icon/membership-card.png'></image>
+        <image src='http://42.193.41.204:8088/workhub/pic/membership-card.png'></image>
         <text>Membership</text>
       </view>
     </view>
@@ -39,7 +39,7 @@
   <van-cell is-link bindtap="toMyReserve">
     <view slot="title">
       <view class="iconAndTitle">
-        <image src='../../images/icon/reserve.png'></image>
+        <image src='http://42.193.41.204:8088/workhub/pic/reserve.png'></image>
         <text>My reservation</text>
       </view>
     </view>
@@ -49,7 +49,7 @@
 <van-cell is-link bindtap="toPrivacy">
     <view slot="title">
       <view class="iconAndTitle">
-        <image src='../../images/icon/privacy-policy.png'></image>
+        <image src='http://42.193.41.204:8088/workhub/pic/privacy-policy.png'></image>
         <text>Privacy terms</text>
       </view>
     </view>
@@ -59,7 +59,7 @@
   <van-cell is-link bindtap="toUs">
     <view slot="title">
       <view class="iconAndTitle">
-        <image src='../../images/icon/information.png'></image>
+        <image src='http://42.193.41.204:8088/workhub/pic/information.png'></image>
         <text>About us</text>
       </view>
     </view>
@@ -69,7 +69,7 @@
 <van-cell is-link bindtap="call">
     <view slot="title">
       <view class="iconAndTitle">
-        <image src='../../images/icon/phonecall.png'></image>
+        <image src='http://42.193.41.204:8088/workhub/pic/phonecall.png'></image>
         <text>Contact us</text>
       </view>
     </view>

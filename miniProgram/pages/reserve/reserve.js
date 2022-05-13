@@ -9,17 +9,17 @@ Page({
    */
   data: {
     bannerList:[{
-      imgUrl:'../../images/icon/leeds.jpg',
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/leeds.jpg',
     },{
-      imgUrl:'../../images/icon/leeds1.jpg',
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/leeds1.jpg',
     },{
-      imgUrl:'../../images/icon/leeds2.jpg',
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/leeds2.jpg',
     },{
-      imgUrl:'../../images/icon/leeds3.jpg'
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/leeds3.jpg'
     },{
-      imgUrl:'../../images/icon/leeds4.jpg'
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/leeds4.jpg'
     },{
-      imgUrl:'../../images/icon/leeds5.jpg'
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/leeds5.jpg'
     }],//rotation list
     venueList:[],//venue list
   },
@@ -65,7 +65,7 @@ Page({
   onShareAppMessage: function () {
     return{
       title:"workingshop",
-      imageUrl:"/images/icon/logo.png"
+      imageUrl:"http://42.193.41.204:8088/workhub/pic/logo.png"
     }
   },
 })

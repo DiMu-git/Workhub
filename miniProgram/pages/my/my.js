@@ -11,7 +11,7 @@ Page({
   data: {
     userInfo:{
       tel:"",
-      url:"../../images/icon/myBody@3x.png",
+      url:"http://42.193.41.204:8088/workhub/pic/myBody@3x.png",
     },
     pageUrl:"",
   },
@@ -24,7 +24,7 @@ Page({
     app.login().then(()=>{
       let userInfo = app.globalData.userInfo
       if(!userInfo.url)[
-        userInfo.url = userInfo.userGender==0?"../../images/icon/myGirl@3x.png":"../../images/icon/myBody@3x.png"
+        userInfo.url = userInfo.userGender==0?"http://42.193.41.204:8088/workhub/pic/myGirl@3x.png":"http://42.193.41.204:8088/workhub/pic/myBody@3x.png"
       ]
       this.setData({
         userInfo:userInfo
@@ -127,7 +127,7 @@ Page({
     let userInfo = app.globalData.userInfo
     if(userInfo){
       if(!userInfo.url)[
-        userInfo.url = "../../images/icon/myBody@3x.png"
+        userInfo.url = "http://42.193.41.204:8088/workhub/pic/myBody@3x.png"
       ]
       this.setData({
         userInfo:userInfo
@@ -171,7 +171,7 @@ Page({
   onShareAppMessage: function () {
     return{
       title:"workingShop",
-      imageUrl:"/images/icon/cover.png"
+      imageUrl:"http://42.193.41.204:8088/workhub/pic/cover.png"
     }
   }
 })

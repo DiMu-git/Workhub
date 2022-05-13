@@ -15,9 +15,9 @@
           <image src='{{item.url}}'></image>
         </view>
         <view class="right">
-          <view class="title ellipsis2"><text>venue：</text>{{item.name}}</view>
+          <view class="title ellipsis2">{{item.name}}</view>
           <view class="title reserveBtn">
-            <view><text>date：</text>{{item.time}}</view>
+            <view><text>date：</text>{{item.ukDate}}</view>
           </view>
           <view class="title reserveBtn">
             <view><text>time：</text>{{item.duringTime}}</view>
@@ -26,7 +26,7 @@
             <view><text>people number：</text>{{item.peopleNum}}</view>
           </view>
           <view class="title reserveBtn">
-            <view><text>price：</text><text class="price">￥{{item.price}}</text></view> 
+            <view><text>price：</text><text class="price">￡ {{item.price}}</text></view> 
           </view>
         </view>
       </view>
@@ -43,7 +43,7 @@
     </block>
 
     <view class="noData" wx:if="{{total == 0}}">
-      <image src="../../images/icon/noData2@2x.png"></image>
+      <image src="http://42.193.41.204:8088/workhub/pic/noData2@2x.png"></image>
       <view class="words">
         <view>no data</view>
       </view>
@@ -60,6 +60,6 @@
   confirmButtonText="confirm"
   cancelButtonText="cancel"
 >
-  <image src="../../images/icon/qrcode.png"></image>
+  <image src="http://42.193.41.204:8088/workhub/pic/qrcode.png"></image>
 </van-dialog>
 

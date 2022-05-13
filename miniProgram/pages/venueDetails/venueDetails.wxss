@@ -1,5 +1,7 @@
-.container .venueDetails {
+.container {
   font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.container .venueDetails {
   padding: 0rpx 36rpx;
 }
 .container .venueDetails image {
@@ -60,7 +62,6 @@
 }
 .container .facilityCnt .infoItem .right .title text {
   font-weight: 500;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container .facilityCnt .infoItem .right .title .price {
   color: red;
@@ -101,7 +102,6 @@
 }
 .container .courseCnt .infoItem .right .title text {
   font-weight: 500;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container .courseCnt .infoItem .right .title .price {
   color: red;

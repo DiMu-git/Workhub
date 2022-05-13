@@ -23,7 +23,7 @@
   <!-- Venue -->
   <view class="venueCnt">
     <view class="infoTitle">
-      <image src='../../images/icon/location.png'></image>
+      <image src='http://42.193.41.204:8088/workhub/pic/location.png'></image>
       <text>Venue List</text>
     </view>
     <view class="content">

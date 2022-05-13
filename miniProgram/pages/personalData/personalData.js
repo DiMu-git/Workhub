@@ -12,7 +12,7 @@ Page({
   data: {
     userInfo:{
       userPhone:"",
-      url:"../../images/icon/myBody@3x.png",
+      url:"http://42.193.41.204:8088/workhub/pic/myBody@3x.png",
       userGender:null,
     },
     tel:"",
@@ -91,7 +91,7 @@ Page({
   onShow: function () {
     let userInfo = JSON.parse(JSON.stringify(app.globalData.userInfo))
     if(!userInfo.url){
-      userInfo.url = userInfo.userGender==0?"../../images/icon/myGirl@3x.png":"../../images/icon/myBody@3x.png"
+      userInfo.url = userInfo.userGender==0?"http://42.193.41.204:8088/workhub/pic/myGirl@3x.png":"http://42.193.41.204:8088/workhub/pic/myBody@3x.png"
     }
     userInfo.userGender=userInfo.userGender+''
 

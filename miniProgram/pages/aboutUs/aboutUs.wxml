@@ -11,7 +11,7 @@
 <view id="developerView">
     <view class="developerItemView">
         <view>Developers</view>
-        <view>Workingshop team</view>
+        <view>Sportshub team</view>
     </view>
     <view class="developerItemView">
         <view>Main Contact</view>
@@ -32,7 +32,7 @@
     </view>
 </view>
 <view id="qrCodeView">
-    <image src="../../images/icon/developer.PNG"></image>
+    <image src="http://42.193.41.204:8088/workhub/pic/developer.PNG"></image>
     <text>Scan the qrcode to contact us!</text>
 </view>
   </view>

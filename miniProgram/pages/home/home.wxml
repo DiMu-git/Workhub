@@ -1,9 +1,9 @@
 <!--pages/home/home-->
 <view class="container">
-  <image src='../../images/icon/leeds.jpg' mode="scaleToFit" style="height:350rpx;width:100%"></image>
+  <image src='http://42.193.41.204:8088/workhub/pic/leeds.jpg' mode="scaleToFit" style="height:350rpx;width:100%"></image>
   <view class="orderListBox">
     <view class="infoTitle">
-      <image src='../../images/icon/reservation.png'></image>
+      <image src='http://42.193.41.204:8088/workhub/pic/reservation.png'></image>
       <text>Recent Reservation</text>
     </view>
     <block wx:for="{{orderList}}" wx:key="index" wx:if="{{index==0}}">
@@ -12,9 +12,9 @@
           <image src='{{item.url}}'></image>
         </view>
         <view class="right">
-          <view class="title"><text>Venue：</text>{{item.name}}</view>
+          <view class="title">{{item.name}}</view>
           <view class="title">
-            <view><text>Date：</text>{{item.time}}</view>
+            <view><text>Date：</text>{{item.ukDate}}</view>
           </view>
           <view class="title">
             <view><text>Time：</text>{{item.duringTime}}</view>
@@ -26,13 +26,13 @@
       </view>
     </block>
     <view class="noData" wx:if="{{totalArr[2] == 0}}">
-      <image src="../../images/icon/noData2@2x.png"></image>
+      <image src="http://42.193.41.204:8088/workhub/pic/noData2@2x.png"></image>
     </view>
   </view>
   <view class="divLine"></view>
   <view class="orderListBox">
     <view class="infoTitle">
-      <image src='../../images/icon/recommand.png'></image>
+      <image src='http://42.193.41.204:8088/workhub/pic/recommand.png'></image>
       <text>Recommanded Venue</text>
     </view>
       <block wx:for="{{venueList}}" wx:key="index" wx:if="{{index == 0}}">
@@ -49,12 +49,12 @@
   </view>
   <view class="orderListBox">
     <view class="infoTitle">
-      <image src='../../images/icon/sport.png'></image>
+      <image src='http://42.193.41.204:8088/workhub/pic/sport.png'></image>
       <text>Related Facility/Course</text>
     </view>
         <view class="infoItem">
           <view class="left">
-            <image src='../../images/icon/leeds1.jpg'></image>
+            <image src='http://42.193.41.204:8088/workhub/pic/leeds1.jpg'></image>
           </view>
           <view class="right">
             <view class="title">Cycling track</view>

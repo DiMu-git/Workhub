@@ -14,9 +14,9 @@ Page({
     ],
     total:49,
     bannerList:[{
-      imgUrl:'../../images/icon/member.png',
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/member.png',
     },{
-      imgUrl:'../../images/icon/premium.png',
+      imgUrl:'http://42.193.41.204:8088/workhub/pic/premium.png',
     }],
   },
   select(e){

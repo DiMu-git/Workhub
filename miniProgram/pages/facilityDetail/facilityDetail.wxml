@@ -15,9 +15,9 @@
                 bind:click="toggle1"
               >
               <view slot="title">
-                <view class="date">{{item.time}}        {{item.duringTime}}</view>
+                <view class="date">{{item.ukDate}}        {{item.duringTime}}</view>
                 <view class="numBox">
-                  <view class="price">￡{{item.price*discount}} per {{item.unit}}</view>
+                  <view class="price">￡{{morning_price}} per {{item.unit}}</view>
                   <view><text>Available: </text>{{item.nums}}</view>
                   <view><text>Total: </text>{{item.maxNum}}</view>
                 </view>
@@ -46,9 +46,9 @@
                 bind:click="toggle2"
               >
               <view slot="title">
-                <view class="date">{{item.time}}        {{item.duringTime}}</view>
+                <view class="date">{{item.ukDate}}        {{item.duringTime}}</view>
                 <view class="numBox">
-                  <view class="price">￡{{item.price*discount}} per {{item.unit}}</view>
+                  <view class="price">￡{{afternoon_price}} per {{item.unit}}</view>
                   <view><text>Available: </text>{{item.nums}}</view>
                   <view><text>Total: </text>{{item.maxNum}}</view>
                 </view>
@@ -77,9 +77,9 @@
                 bind:click="toggle3"
               >
               <view slot="title">
-                <view class="date">{{item.time}} {{item.duringTime}}</view>
+                <view class="date">{{item.ukDate}} {{item.duringTime}}</view>
                 <view class="numBox">
-                  <view class="price">￡{{item.price*discount}} per {{item.unit}}</view>
+                  <view class="price">￡{{evening_price}} per {{item.unit}}</view>
                   <view><text>Available: </text>{{item.nums}}</view>
                   <view><text>Total: </text>{{item.maxNum}}</view>
                 </view>
@@ -127,7 +127,7 @@
           <van-cell clickable data-name="1" bind:click="onClick">
             <view slot="title">
               <view class="bankNum">
-              <image src='../../images/icon/visa.png'></image>
+              <image src='http://42.193.41.204:8088/workhub/pic/visa.png'></image>
                 <text>Bank</text>
                 <van-field
                   model:value="{{ bankNum }}"
@@ -143,7 +143,7 @@
           <van-cell clickable data-name="2" bind:click="onClick">
             <view slot="title">
               <view class="bankNum">
-              <image src='../../images/icon/pound.png'></image>
+              <image src='http://42.193.41.204:8088/workhub/pic/pound.png'></image>
                 <text>Cash</text>
                 <van-field/>
               </view>
@@ -153,7 +153,7 @@
           <van-cell clickable data-name="3" bind:click="onClick">
             <view slot="title">
               <view class="bankNum">
-              <image src='../../images/icon/wechatpay.png'></image>
+              <image src='http://42.193.41.204:8088/workhub/pic/wechatpay.png'></image>
                 <text>WeChatPay</text>
                 <van-field/>
               </view>
@@ -177,3 +177,22 @@
   </van-submit-bar>
   <van-dialog id="van-dialog" />
 </view>
+
+<van-cell title="showpop" is-link bind:click="showPopup" />
+
+<van-popup show="{{ show }}" closeable position="bottom" custom-style="height: 60%" bind:close="onClose">
+	<view class="Toptitle">Please enter</view>
+	
+	<form bindsubmit="formSubmit">
+		<view class='content'>
+			<block wx:for="{{Length}}" wx:key="item">
+				<input class='iptbox' value="{{Value.length>=index+1?Value[index]:''}}" disabled password='{{ispassword}}' catchtap='Tap'></input>
+			</block>
+		</view>
+		<input name="password" password="{{true}}" class='ipt' maxlength="{{Length}}" focus="{{isFocus}}" bindinput="Focus"></input>
+		<view>
+			<button class="btn-area" type='primary' disabled='{{disabled}}' formType="submit">Confirm</button>
+		</view>
+	</form>
+	
+</van-popup>

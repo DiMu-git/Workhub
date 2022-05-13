@@ -18,9 +18,19 @@ Page({
     quan3:[],
 
     price:0,
+
+    morning_price:0,
+    afternoon_price:0,
+    evening_price:0,
     radio:"1",
     bankNum:"",
     peopleNum:0,
+    Length: 6,
+    isFocus: false,
+    Value: "",
+    ispassword: true,
+    disabled: true,
+    show: false,
     msg:{
       "type":2,
       "money":0,
@@ -30,6 +40,69 @@ Page({
       "peopleNum":"",
       "data":[]
     }
+  },
+
+  Focus(e) {
+    var that = this;
+    console.log(e.detail.value);
+    var inputValue = e.detail.value;
+    var ilen = inputValue.length;
+    if (ilen == 6) {
+      that.setData({
+        disabled: false,
+      })
+    } else {
+      that.setData({
+        disabled: true,
+      })
+    }
+    that.setData({
+      Value: inputValue,
+    })
+  },
+  Tap() {
+    var that = this;
+    that.setData({
+      isFocus: true,
+    })
+  },
+  formSubmit(e) {
+    this.setData({
+      show: false,
+    })
+   console.log(e.detail.value.password)
+
+   if(e.detail.value.password==123456){
+    orderPay(this.data.msg).then(res=>{
+      wx.showToast({
+        title: 'Success',
+        icon: 'success',
+        duration: 2000
+      })
+      app.login()
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1
+        }) 
+      }, 2000);
+    });
+   } else{
+    wx.showToast({
+      title: 'Wrong Password',
+      icon:'error',
+      duration: 2000
+    })
+   }
+    
+  },
+  
+  showPopup() {
+    this.setData({ show: true });
+  },
+  onClose() {
+    this.setData({
+      show: false
+    });
   },
   changeTabs(){
 
@@ -58,12 +131,12 @@ Page({
     let dataTemp = [];
     let numTemp = 50;
     this.setData({
-      minimum:this.data.result1[0].num
+      minimum:this.data.result1[0].nums
   });
     this.data.result1.forEach((item,index) => {
       let obj={id:item.id}
       if(this.data.quan1.indexOf(index+'')>-1){ 
-        moneyTemp += parseFloat(item.price*this.data.discount)
+        moneyTemp += parseFloat(item.price*this.data.discount-2)
         dataTemp.push(obj)
         if(item.nums<=numTemp){
           numTemp=item.nums
@@ -87,7 +160,7 @@ Page({
       let obj={id:item.id}
 
       if(this.data.quan3.indexOf(index+'')>-1){ 
-        moneyTemp += parseFloat(item.price*this.data.discount)
+        moneyTemp += parseFloat(item.price*this.data.discount-4)
         dataTemp.push(obj)
         if(item.nums<=numTemp){
           numTemp=item.nums
@@ -233,28 +306,35 @@ Page({
     }
     this.data.msg.peopleNum=this.data.peopleNum
     this.data.msg.money=this.data.price/100
-    Dialog.confirm({
-      title: title,
-      message: message,
-      confirmButtonText:"Confirm",
-      cancelButtonText:"Cancel"
-    }).then(() => {
-      orderPay(this.data.msg).then(res=>{
-        wx.showToast({
-          title: 'Success',
-          icon: 'success',
-          duration: 2000
+    if(this.data.radio==2){
+      Dialog.confirm({
+        title: title,
+        message: message,
+        confirmButtonText:"Confirm",
+        cancelButtonText:"Cancel"
+      }).then(() => {
+        orderPay(this.data.msg).then(res=>{
+          wx.showToast({
+            title: 'Success',
+            icon: 'success',
+            duration: 2000
+          })
+          app.login()
+          setTimeout(() => {
+            wx.navigateBack({
+              delta: 1
+            }) 
+          }, 2000);
         })
-        app.login()
-        setTimeout(() => {
-          wx.navigateBack({
-            delta: 1
-          }) 
-        }, 2000);
-      })
-    }).catch(() => {
-      // on cancel
-    });
+      }).catch(() => {
+        // on cancel
+      });
+    } else{
+      console.log("11")
+      this.showPopup();
+      console.log(this.data.show)
+    }
+    
   },
 
 
@@ -262,6 +342,7 @@ Page({
     // options.type=1
     // options.id="751fc9a30ec04407a6237a10e2a5b941"
     getTimes({type:options.type,id:options.id}).then(res=>{
+      var price = res[0].price
       let result1 = [];
       let result2 = [];
       let result3 = [];
@@ -275,16 +356,22 @@ Page({
         }
       });
       this.setData({reserveList:res, result1:result1, result2:result2, result3:result3})
+      if(app.globalData.userInfo.vip==1){
+        this.data.discount = 0.8;
+      }
+      else{
+        this.data.discount = 1;
+      }
+      this.setData({
+        morning_price: ((price-2)*this.data.discount).toFixed(0),
+        afternoon_price: ((price)*this.data.discount).toFixed(0),
+        evening_price: ((price-4)*this.data.discount).toFixed(0)
+      })
     })
     this.setData({
       bankNum:app.globalData.userInfo.bank
     })
-    if(app.globalData.userInfo.vip==1){
-      this.data.discount = 0.8;
-    }
-    else{
-      this.data.discount = 1;
-    }
+
 this.setData({
   discount:this.data.discount
 })
